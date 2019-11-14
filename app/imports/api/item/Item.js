@@ -10,7 +10,7 @@ const ItemSchema = new SimpleSchema({
   image: String,
   itemName: String,
   price: Number,
-  seller: String,
+  owner: String,
   condition: {
     type: String,
     allowedValues: ['excellent', 'good', 'fair', 'poor'],
