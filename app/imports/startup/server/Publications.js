@@ -24,12 +24,7 @@ Meteor.publish('StuffAdmin', function publish() {
   return this.ready();
 });
 
-<<<<<<< HEAD
-Meteor.publish('Item', function publish() {
-=======
-
 Meteor.publish('Items', function publish() {
->>>>>>> issue-007
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Items.find({ owner: username });
@@ -37,16 +32,10 @@ Meteor.publish('Items', function publish() {
   return this.ready();
 });
 
-<<<<<<< HEAD
-Meteor.publish('ItemAdmin', function publish() {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Stuffs.find();
-=======
 /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
 Meteor.publish('ItemsAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Items.find();
->>>>>>> issue-007
   }
   return this.ready();
 });
