@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stuffs } from '/imports/api/stuff/Stuff';
+import { Items } from '/imports/api/item/Items';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
@@ -18,7 +18,6 @@ const formSchema = new SimpleSchema({
   name: String,
   price: Number,
   image: String,
-  owner: String,
   condition: {
     type: String,
     allowedValues: ['excellent', 'good', 'fair', 'poor'],
@@ -34,7 +33,7 @@ class AddStuff extends React.Component {
   submit(data, formRef) {
     const { name, price, image, condition, description } = data;
     const owner = Meteor.user().username;
-    Stuffs.insert({ name, price, image, owner, condition, description },
+    Items.insert({ name, price, image, owner, condition, description },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
