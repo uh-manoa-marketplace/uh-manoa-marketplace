@@ -3,6 +3,7 @@ import { Stuffs } from '/imports/api/stuff/Stuff';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
+import LongTextField from 'uniforms-semantic/LongTextField';
 import NumField from 'uniforms-semantic/NumField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
@@ -15,12 +16,15 @@ import SimpleSchema from 'simpl-schema';
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
   name: String,
-  quantity: Number,
+  price: Number,
+  image: String,
+  owner: String,
   condition: {
     type: String,
     allowedValues: ['excellent', 'good', 'fair', 'poor'],
     defaultValue: 'good',
   },
+  description: String,
 });
 
 /** Renders the Page for adding a document. */
@@ -28,9 +32,9 @@ class AddStuff extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { name, quantity, condition } = data;
+    const { name, price, image, condition, description } = data;
     const owner = Meteor.user().username;
-    Stuffs.insert({ name, quantity, condition, owner },
+    Stuffs.insert({ name, price, image, owner, condition, description },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -49,7 +53,7 @@ class AddStuff extends React.Component {
               centered>
           <Grid.Column>
             <Header as="h2"
-                    textAlign="center">Add Stuff</Header>
+                    textAlign="center">Add Item</Header>
             <AutoForm ref={ref => {
               fRef = ref;
             }}
@@ -57,9 +61,11 @@ class AddStuff extends React.Component {
                       onSubmit={data => this.submit(data, fRef)}>
               <Segment>
                 <TextField name='name'/>
-                <NumField name='quantity'
+                <NumField name='price'
                           decimal={false}/>
+                <TextField name='image'/>
                 <SelectField name='condition'/>
+                <LongTextField name='description'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
               </Segment>
