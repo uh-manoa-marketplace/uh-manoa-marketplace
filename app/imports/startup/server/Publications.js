@@ -1,11 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
-<<<<<<< HEAD
-import { Items } from '../../api/item/Item';
-=======
 import { Items } from '../../api/item/Items';
->>>>>>> issue-007
+
 
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Stuff', function publish() {
