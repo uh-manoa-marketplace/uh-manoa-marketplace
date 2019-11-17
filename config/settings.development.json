@@ -10,12 +10,6 @@
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
-<<<<<<< HEAD
-
-  "defaultItems": [
-    { "image": "#", "itemName": "Sample1", "price": 15, "owner": "John Doe", "condition": "excellent" },
-    { "image": "#", "itemName": "Sample2", "price": 15, "owner": "John Doe", "condition": "poor" }
-=======
   "defaultItems": [
     { "name": "Mini Fridge",
       "price": 90,
@@ -31,6 +25,5 @@
       "condition": "excellent",
       "description": "Used it only a few times while I took the class, no damaged pages at all."
     }
->>>>>>> issue-007
   ]
 }
