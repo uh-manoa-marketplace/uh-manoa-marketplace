@@ -9,7 +9,7 @@ class Profile extends React.Component {
 
           <Grid.Column width={8}>
             <h1>Profile Page</h1>
-            <Image src={'https://pmcdeadline2.files.wordpress.com/2018/09/6241.jpeg?w=605'}/> // Placeholder photo
+            <Image src={'https://pmcdeadline2.files.wordpress.com/2018/09/6241.jpeg?w=605'}/>
             <p>
               Place profile info here. <br/>
               Name <br/>
