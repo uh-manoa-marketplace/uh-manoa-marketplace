@@ -25,7 +25,8 @@ class Landing extends React.Component {
                     <Icon name="search" size="large"/>
                   </Header>
                   <p>
-                    <span className='headings'>Find</span> UH Manoa-related items you may want or need for cheaper prices.
+                    <span className='headings'>Find</span>
+                    UH Manoa-related items you may want or need for cheaper prices.
                   </p>
                 </List.Item>
                 <List.Item>
