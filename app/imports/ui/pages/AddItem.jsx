@@ -1,6 +1,6 @@
 import React from 'react';
 import { Items } from '/imports/api/item/Items';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Grid, Segment, Header, Form } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import LongTextField from 'uniforms-semantic/LongTextField';
@@ -62,7 +62,10 @@ class AddStuff extends React.Component {
                 <TextField name='name'/>
                 <NumField name='price'
                           decimal={false}/>
-                <TextField name='image'/>
+                <Form.Field>
+                  <label>Image</label>
+                  <input type="file" onChange={this.fileChange} />
+                </Form.Field>
                 <SelectField name='condition'/>
                 <LongTextField name='description'/>
                 <SubmitField value='Submit'/>

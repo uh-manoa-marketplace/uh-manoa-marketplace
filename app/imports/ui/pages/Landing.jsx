@@ -10,7 +10,7 @@ class Landing extends React.Component {
           <Grid verticalAlign='middle' columns="2" container>
             <Grid.Column width={8} textAlign='center'>
               <Header as="h1">
-                Buy, Sell, Trade with others in the UH community
+                Buy, Sell, & Trade with others in the UH community
               </Header>
               <List>
                 <List.Item>
@@ -25,7 +25,8 @@ class Landing extends React.Component {
                     <Icon name="search" size="large"/>
                   </Header>
                   <p>
-                    <span className='headings'>Find</span> UH Manoa-related items you may want or need for cheaper prices.
+                    <span className='headings'>Find</span>
+                    UH Manoa-related items you may want or need for cheaper prices.
                   </p>
                 </List.Item>
                 <List.Item>
