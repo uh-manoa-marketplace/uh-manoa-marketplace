@@ -9,5 +9,21 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+  "defaultItems": [
+    { "name": "Mini Fridge",
+      "price": 90,
+      "image": "https://target.scene7.com/is/image/Target/GUEST_c26aeeb0-137f-4125-bf78-1bb21e729eda?wid=488&hei=488&fmt=pjpeg",
+      "owner": "john@foo.com",
+      "condition": "good",
+      "description": "Decently sized fridge that can keep your food and drinks cold. Don't need it since I'm graduating"
+    },
+    { "name": "Introduction to Algorithms, Third Edition",
+      "price": 20,
+      "image": "https://i.pinimg.com/originals/7e/5f/1c/7e5f1cb59b43c91c1c5b309814559fae.jpg",
+      "owner": "admin@foo.com",
+      "condition": "excellent",
+      "description": "Used it only a few times while I took the class, no damaged pages at all."
+    }
   ]
 }
