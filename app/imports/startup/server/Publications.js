@@ -20,11 +20,10 @@ Meteor.publish('StuffAdmin', function publish() {
   return this.ready();
 });
 
-
+/** Was able to fix issue where regular users were unable to see what admins posted as well. */
 Meteor.publish('Items', function publish() {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Items.find({ owner: username });
+    return Items.find();
   }
   return this.ready();
 });
