@@ -3,6 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Items } from '../../api/item/Items';
 
+
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Stuff', function publish() {
   if (this.userId) {
@@ -20,7 +21,6 @@ Meteor.publish('StuffAdmin', function publish() {
   return this.ready();
 });
 
-/** Was able to fix issue where regular users were unable to see what admins posted as well. */
 Meteor.publish('Items', function publish() {
   if (this.userId) {
     return Items.find();
