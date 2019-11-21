@@ -38,15 +38,17 @@ class ItemsPage extends React.Component {
     return (
         <Container>
           <Header as='h2' textAlign='center'>List of Items</Header>
-          <Input
-              fluid
-              icon = 'search'
-              type='text'
-              value={this.state.search}
-              onChange={this.updateSearch.bind(this)}
-          />
+          <Container className='searchField'>
+            <Input
+                fluid
+                icon = 'search'
+                type='text'
+                value={this.state.search}
+                onChange={this.updateSearch.bind(this)}
+            />
+          </Container>
           <Card.Group>
-            {filteredItems.map((item, index) => <Item key={index} item={item}/>)}
+            {filteredItems.map((item, index) => <Item key={index} item={item} Items={Items}/>)}
           </Card.Group>
         </Container>
     );

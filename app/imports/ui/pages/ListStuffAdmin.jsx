@@ -36,7 +36,6 @@ class ListStuffAdmin extends React.Component {
     );
   }
 }
-
 /** Require an array of Stuff documents in the props. */
 ListStuffAdmin.propTypes = {
   stuffs: PropTypes.array.isRequired,

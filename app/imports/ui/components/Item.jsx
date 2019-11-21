@@ -1,10 +1,19 @@
 import React from 'react';
-import { Card, Image, Rating } from 'semantic-ui-react';
+import { Button, Card, Image, Rating } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Item extends React.Component {
+
+  messageUser(user) {
+    console.log(`Attempting to message '${user}'...`);
+  }
+
+  myFav(item) {
+    console.log(`Adding '${item}' to your favorites...`);
+  }
+
   render() {
     return (
         <Card centered>
@@ -12,8 +21,20 @@ class Item extends React.Component {
             <Image centered size='medium' src={this.props.item.image}/>
           </Card.Content>
           <Card.Content>
-            <Card.Header>{this.props.item.name}<Rating icon='heart' /></Card.Header>
-            <Card.Meta>Owner: {this.props.item.owner}</Card.Meta>
+            <Card.Header>
+              {this.props.item.name}
+              <Rating icon='heart' floated='right' onRate={() => this.myFav(this.props.item._id)}/>
+            </Card.Header>
+            <Card.Meta>
+              Owner: {this.props.item.owner}
+              <Button
+                  floated='right'
+                  compact
+                  size='mini'
+                  icon='paper plane'
+                  onClick={() => this.messageUser(this.props.item.owner)}
+              />
+            </Card.Meta>
             <Card.Description>
               Price: ${this.props.item.price}<br/>
               Condition: {this.props.item.condition}<br/>
