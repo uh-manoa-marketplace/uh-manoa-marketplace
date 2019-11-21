@@ -37,7 +37,7 @@ class Profile extends React.Component {
 
           <Grid.Column>
             <Header as={'h2'} textAlign={'center'}>Your Favorited Items</Header>
-            <Card.Group>
+            <Card.Group itemsPerRow={2}>
               {allItems.map((item, index) => <Item key={index} item={item}/>)}
             </Card.Group>
           </Grid.Column>
