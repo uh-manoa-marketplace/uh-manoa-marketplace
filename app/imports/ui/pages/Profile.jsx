@@ -33,6 +33,8 @@ class Profile extends React.Component {
               </Card.Content>
             </Card>
             <Button content={'Edit Profle'} fluid/>
+            <Button content={'My Favorites'} fluid/>
+            <Button content={'My Items'} fluid/>
           </Grid.Column>
 
           <Grid.Column>
