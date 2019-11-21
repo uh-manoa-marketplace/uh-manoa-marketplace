@@ -44,7 +44,7 @@ class Landing extends React.Component {
               <Header as="h1">
                 Start listing today!
               </Header>
-              <Button as={NavLink} exact to="/signup">Signup</Button>
+              <Button as={NavLink} exact to="/signup"><Icon name="add user"/>Signup</Button>
             </Grid.Column>
           </Grid>
         </Container>
