@@ -2,16 +2,13 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Image, Icon, Card, Grid, Header, Button } from 'semantic-ui-react';
-import Item from '/imports/ui/components/Item';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { Items } from '../../api/item/Items';
 
 /** A simple static component to render some text for the landing page. */
 class Profile extends React.Component {
   render() {
-
-    const allItems = this.props.items; // Will be changed to favorited items only
-
     return (
         <Grid columns={2} divided container>
           <Grid.Column>
@@ -32,16 +29,9 @@ class Profile extends React.Component {
                 </Button>
               </Card.Content>
             </Card>
-            <Button content={'Edit Profle'} fluid/>
-            <Button content={'My Favorites'} fluid/>
-            <Button content={'My Items'} fluid/>
-          </Grid.Column>
-
-          <Grid.Column>
-            <Header as={'h2'} textAlign={'center'}>Your Favorited Items</Header>
-            <Card.Group itemsPerRow={2}>
-              {allItems.map((item, index) => <Item key={index} item={item}/>)}
-            </Card.Group>
+            <Button content={'Edit Profle'} />
+            <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
+            <Button content={'My Items'} />
           </Grid.Column>
         </Grid>
     );
