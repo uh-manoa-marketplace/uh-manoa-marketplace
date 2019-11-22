@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Image, Icon, Card, Grid, Header, Button } from 'semantic-ui-react';
+import { Image, Icon, Card, Grid, Header, Button, Container } from 'semantic-ui-react';
 import Favorite from '/imports/ui/components/Favorite';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -38,12 +38,14 @@ class Profile extends React.Component {
 
           <Grid.Column>
             <Header as={'h2'} textAlign={'center'}>Your Favorite Items</Header>
+            <Container textAlign='center'>
+              <Button content={'Edit Profle'} />
+              <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
+              <Button content={'My Items'} />
+            </Container>
             <Card.Group itemsPerRow={2}>
               {allItems.map((favorite, index) => <Favorite key={index} favorite={favorite} Favorites={Favorites}/>)}
             </Card.Group>
-            <Button content={'Edit Profle'} />
-            <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
-            <Button content={'My Items'} />
           </Grid.Column>
         </Grid>
     );

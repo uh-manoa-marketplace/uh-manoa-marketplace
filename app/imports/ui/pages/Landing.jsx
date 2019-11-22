@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 class Landing extends React.Component {
   render() {
     return (
-        <Container borderless>
+        <Container borderless='true'>
           <Grid verticalAlign='middle' columns="2" container>
             <Grid.Column width={8} textAlign='center'>
               <Header as="h1">
