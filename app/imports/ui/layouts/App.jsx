@@ -12,6 +12,7 @@ import ItemsPageAdmin from '../pages/ItemsPageAdmin';
 import AddItem from '../pages/AddItem';
 import EditStuff from '../pages/EditStuff';
 import Profile from '../pages/Profile';
+import Favorites from '../pages/Favorites';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
@@ -31,6 +32,7 @@ class App extends React.Component {
               <ProtectedRoute path="/list" component={ItemsPage}/>
               <ProtectedRoute path="/add" component={AddItem}/>
               <ProtectedRoute path="/profile" component={Profile}/>
+              <ProtectedRoute path="/favorites" component={Favorites}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <AdminProtectedRoute path="/admin" component={ItemsPageAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>

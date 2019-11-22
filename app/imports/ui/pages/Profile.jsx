@@ -4,6 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Image, Icon, Card, Grid, Header, Button } from 'semantic-ui-react';
 import Favorite from '/imports/ui/components/Favorite';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { Favorites } from '../../api/favorite/Favorites';
 
 /** A simple static component to render some text for the landing page. */
@@ -40,6 +41,9 @@ class Profile extends React.Component {
             <Card.Group itemsPerRow={2}>
               {allItems.map((favorite, index) => <Favorite key={index} favorite={favorite} Favorites={Favorites}/>)}
             </Card.Group>
+            <Button content={'Edit Profle'} />
+            <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
+            <Button content={'My Items'} />
           </Grid.Column>
         </Grid>
     );
