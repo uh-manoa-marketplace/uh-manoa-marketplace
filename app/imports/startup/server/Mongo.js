@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Items } from '../../api/item/Items';
+import { Favorites } from '../../api/favorite/Favorites';
 
 /* eslint-disable no-console */
 
@@ -28,5 +29,19 @@ if (Items.find().count() === 0) {
   if (Meteor.settings.defaultItems) {
     console.log('Creating item data.');
     Meteor.settings.defaultItems.map(data => addItem(data));
+  }
+}
+
+/** Initialize the database with a default data document. */
+function addFavorite(data) {
+  console.log(`  Adding: ${data.name} (${data.owner})`);
+  Favorites.insert(data);
+}
+
+/** Initialize the collection if empty. */
+if (Favorites.find().count() === 0) {
+  if (Meteor.settings.defaultFavorites) {
+    console.log('Creating favorites data.');
+    Meteor.settings.defaultFavorites.map(data => addFavorite(data));
   }
 }

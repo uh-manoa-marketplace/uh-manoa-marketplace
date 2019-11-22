@@ -2,15 +2,15 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Image, Icon, Card, Grid, Header, Button } from 'semantic-ui-react';
-import Item from '/imports/ui/components/Item';
+import Favorite from '/imports/ui/components/Favorite';
 import PropTypes from 'prop-types';
-import { Items } from '../../api/item/Items';
+import { Favorites } from '../../api/favorite/Favorites';
 
 /** A simple static component to render some text for the landing page. */
 class Profile extends React.Component {
   render() {
 
-    const allItems = this.props.items; // Will be changed to favorited items only
+    const allItems = this.props.favorites; // Will be changed to favourite items only
 
     return (
         <Grid columns={2} divided container>
@@ -36,9 +36,9 @@ class Profile extends React.Component {
           </Grid.Column>
 
           <Grid.Column>
-            <Header as={'h2'} textAlign={'center'}>Your Favorited Items</Header>
+            <Header as={'h2'} textAlign={'center'}>Your Favorite Items</Header>
             <Card.Group itemsPerRow={2}>
-              {allItems.map((item, index) => <Item key={index} item={item}/>)}
+              {allItems.map((favorite, index) => <Favorite key={index} favorite={favorite} Favorites={Favorites}/>)}
             </Card.Group>
           </Grid.Column>
         </Grid>
@@ -48,16 +48,16 @@ class Profile extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 Profile.propTypes = {
-  items: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Items documents.
-  const subscription = Meteor.subscribe('Items');
+  const subscription = Meteor.subscribe('Favorites');
   return {
-    items: Items.find({}).fetch(),
+    favorites: Favorites.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(Profile);

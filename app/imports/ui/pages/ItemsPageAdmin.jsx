@@ -5,6 +5,7 @@ import ItemAdmin from '/imports/ui/components/ItemAdmin';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Items } from '../../api/item/Items';
+
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ItemsPageAdmin extends React.Component {
 

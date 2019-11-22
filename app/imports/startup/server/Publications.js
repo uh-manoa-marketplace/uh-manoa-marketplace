@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Items } from '../../api/item/Items';
-
+import { Favorites } from '../../api/favorite/Favorites';
 
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Stuff', function publish() {
@@ -32,6 +32,14 @@ Meteor.publish('Items', function publish() {
 Meteor.publish('ItemsAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Items.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish('Favorites', function publish() {
+  if (this.userId) {
+    // const username = Meteor.users.findOne(this.userId).username;
+    return Favorites.find();
   }
   return this.ready();
 });
