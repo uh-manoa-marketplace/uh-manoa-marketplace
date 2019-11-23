@@ -7,6 +7,11 @@ const Favorites = new Mongo.Collection('Favorites');
 
 /** Define a schema to specify the structure of each document in the collection. */
 const FavoritesSchema = new SimpleSchema({
+  category: {
+    type: String,
+    allowedValues: ['electronics', 'books', 'supplies', 'furniture', 'miscellaneous'],
+    defaultValue: 'electronics',
+  },
   name: String,
   price: Number,
   image: String,

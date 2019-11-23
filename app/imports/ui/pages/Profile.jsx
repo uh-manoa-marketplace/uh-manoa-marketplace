@@ -33,15 +33,14 @@ class Profile extends React.Component {
                 </Button>
               </Card.Content>
             </Card>
-            <Button content={'Edit Profle'} fluid/>
           </Grid.Column>
 
           <Grid.Column>
-            <Header as={'h2'} textAlign={'center'}>Your Favorite Items</Header>
-            <Container textAlign='center'>
+            <Container textAlign='center' >
               <Button content={'Edit Profle'} />
               <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
               <Button content={'My Items'} />
+              <Header as={'h2'} textAlign={'center'}>Your Favorite Items</Header>
             </Container>
             <Card.Group itemsPerRow={2}>
               {allItems.map((favorite, index) => <Favorite key={index} favorite={favorite} Favorites={Favorites}/>)}
