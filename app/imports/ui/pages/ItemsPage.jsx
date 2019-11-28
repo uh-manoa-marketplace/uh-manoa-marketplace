@@ -45,7 +45,7 @@ class ItemsPage extends React.Component {
                 type='text'
                 value={this.state.search}
                 onChange={this.updateSearch.bind(this)}
-            />
+                />
           </Container>
           <Card.Group>
             {filteredItems.map((item, index) => <Item key={index} item={item} Items={Items}/>)}
