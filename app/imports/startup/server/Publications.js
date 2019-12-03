@@ -50,6 +50,9 @@ Meteor.publish('Messages', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Messages.find({ owner: username });
+  }
+  return this.ready();
+});
 
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Profiles', function publish() {
@@ -58,4 +61,4 @@ Meteor.publish('Profiles', function publish() {
     return Profiles.find({ owner: username });
   }
   return this.ready();
-};
+});
