@@ -4,14 +4,11 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Favorites } from '../../api/favorite/Favorites';
+import Message from './Message';
+import AddMessage from './AddMessage';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Item extends React.Component {
-
-  messageUser(user) {
-    console.log(`Attempting to message '${user}'...`);
-  }
-
   myFav(docID, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
     Favorites.insert(
         {
@@ -67,7 +64,7 @@ class Item extends React.Component {
                   compact
                   size='mini'
                   icon='paper plane'
-                  onClick={() => this.messageUser(this.props.item.owner)}
+                  onClick={ this.props.message.map((message, index) => <Message key={index} message={message}/>) }
               />
             </Card.Meta>
             <Card.Description>
@@ -75,6 +72,9 @@ class Item extends React.Component {
               Condition: {this.props.item.condition}<br/>
               Description: {this.props.item.description}
             </Card.Description>
+          </Card.Content>
+          <Card.Content>
+            <AddMessage owner={this.props.item.owner} user={this.props.item._id}/>
           </Card.Content>
         </Card>
     );
@@ -84,6 +84,7 @@ class Item extends React.Component {
 /** Require a document to be passed to this component. */
 Item.propTypes = {
   item: PropTypes.object.isRequired,
+  message: PropTypes.array.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */

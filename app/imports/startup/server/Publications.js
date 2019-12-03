@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { Messages } from '../../api/message/Messages';
 import { Items } from '../../api/item/Items';
 import { Favorites } from '../../api/favorite/Favorites';
 
@@ -40,6 +41,14 @@ Meteor.publish('Favorites', function publish() {
   if (this.userId) {
     // const username = Meteor.users.findOne(this.userId).username;
     return Favorites.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish('Messages', function publish() {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Messages.find({ owner: username });
   }
   return this.ready();
 });

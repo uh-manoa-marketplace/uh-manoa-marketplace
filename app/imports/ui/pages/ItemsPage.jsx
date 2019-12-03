@@ -5,6 +5,8 @@ import Item from '/imports/ui/components/Item';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Items } from '../../api/item/Items';
+import { Messages } from '../../api/message/Messages';
+
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ItemsPage extends React.Component {
 
@@ -48,7 +50,11 @@ class ItemsPage extends React.Component {
             />
           </Container>
           <Card.Group>
-            {filteredItems.map((item, index) => <Item key={index} item={item} Items={Items}/>)}
+            {filteredItems.map((item, index) => <Item
+                key={index}
+                item={item}
+                Items={Items}
+                messages={this.props.messages.filter(messages => (messages.owner === item._id))}/>)}
           </Card.Group>
         </Container>
     );
@@ -58,6 +64,7 @@ class ItemsPage extends React.Component {
 /** Require an array of Stuff documents in the props. */
 ItemsPage.propTypes = {
   items: PropTypes.array.isRequired,
+  messages: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -65,8 +72,10 @@ ItemsPage.propTypes = {
 export default withTracker(() => {
   // Get access to Items documents.
   const subscription = Meteor.subscribe('Items');
+  const subscription2 = Meteor.subscribe('Messages');
   return {
     items: Items.find({}).fetch(),
-    ready: subscription.ready(),
+    messages: Messages.find({}).fetch(),
+    ready: subscription.ready() && subscription2.ready(),
   };
 })(ItemsPage);
