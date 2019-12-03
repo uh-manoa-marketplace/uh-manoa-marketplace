@@ -4,6 +4,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import { Messages } from '../../api/message/Messages';
 import { Items } from '../../api/item/Items';
 import { Favorites } from '../../api/favorite/Favorites';
+import { Profiles } from '../../api/profiles/Profile';
 
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Stuff', function publish() {
@@ -49,6 +50,12 @@ Meteor.publish('Messages', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Messages.find({ owner: username });
+
+/** This subscription publishes only the documents associated with the logged in user */
+Meteor.publish('Profiles', function publish() {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Profiles.find({ owner: username });
   }
   return this.ready();
-});
+};
