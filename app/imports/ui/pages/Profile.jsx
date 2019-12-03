@@ -1,11 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Image, Icon, Card, Grid, Header, Button, Container } from 'semantic-ui-react';
+import { Card, Grid, Header, Button, Container, Icon, Image } from 'semantic-ui-react';
 import Favorite from '/imports/ui/components/Favorite';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Favorites } from '../../api/favorite/Favorites';
+import { Profiles } from '../../api/profiles/Profile';
+import ProfileCard from '../components/ProfileCard';
 
 /** A simple static component to render some text for the landing page. */
 class Profile extends React.Component {
@@ -33,6 +35,9 @@ class Profile extends React.Component {
                 </Button>
               </Card.Content>
             </Card>
+            {/* eslint-disable-next-line max-len */}
+            {this.props.profiles.map((profile, index) => <ProfileCard key={index} profile={profile} Profiles={Profiles}/>)}
+            <Button content={'Edit Profle'} fluid/>
           </Grid.Column>
 
           <Grid.Column>
@@ -54,15 +59,18 @@ class Profile extends React.Component {
 /** Require an array of Stuff documents in the props. */
 Profile.propTypes = {
   favorites: PropTypes.array.isRequired,
+  profiles: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Items documents.
-  const subscription = Meteor.subscribe('Favorites');
+  const subscription1 = Meteor.subscribe('Favorites');
+  const subscription2 = Meteor.subscribe('Profiles');
   return {
     favorites: Favorites.find({}).fetch(),
-    ready: subscription.ready(),
+    profiles: Profiles.find({}).fetch(),
+    ready: subscription1.ready() && subscription2.ready(),
   };
 })(Profile);
