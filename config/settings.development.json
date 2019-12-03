@@ -26,5 +26,14 @@
       "description": "Used it only a few times while I took the class, no damaged pages at all."
     }
   ],
-  "defaultFavorites": []
+  "defaultFavorites": [],
+  "defaultProfiles": [
+    {
+      "firstName": "Jonathan",
+      "lastName": "Foobar III",
+      "image": "https://pmcdeadline2.files.wordpress.com/2018/09/6241.jpeg?w=605",
+      "biography": "Johnathan is a junior majoring in ICS.",
+      "owner": "john@foo.com"
+    }
+  ]
 }

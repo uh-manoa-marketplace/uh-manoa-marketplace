@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Items } from '../../api/item/Items';
 import { Favorites } from '../../api/favorite/Favorites';
+import { Profiles } from '../../api/profiles/Profile';
 
 /* eslint-disable no-console */
 
@@ -43,5 +44,19 @@ if (Favorites.find().count() === 0) {
   if (Meteor.settings.defaultFavorites) {
     console.log('Creating favorites data.');
     Meteor.settings.defaultFavorites.map(data => addFavorite(data));
+  }
+}
+
+/** Initialize the database with a default data document. */
+function addProfile(data) {
+  console.log(`  Adding: ${data.lastName} (${data.owner})`);
+  Profiles.insert(data);
+}
+
+/** Initialize the collection if empty. */
+if (Profiles.find().count() === 0) {
+  if (Meteor.settings.defaultProfiles) {
+    console.log('Creating profiles data.');
+    Meteor.settings.defaultProfiles.map(data => addProfile(data));
   }
 }
