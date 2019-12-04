@@ -67,6 +67,7 @@ class ItemsPageAdmin extends React.Component {
     // This is in the event that the choice "All" is selected. We are assuming that each category will have items
     // inside it already.
     if (checker === true) {
+      // Reassigns the empty list with all the created Items within the collection.
       findItems = filteredItems;
     }
 
