@@ -34,6 +34,13 @@
       "image": "https://pmcdeadline2.files.wordpress.com/2018/09/6241.jpeg?w=605",
       "biography": "Johnathan is a junior majoring in ICS.",
       "owner": "john@foo.com"
+    },
+    {
+      "firstName": "Admin",
+      "lastName": "",
+      "image": "https://www.zoho.com/analytics/help/images/admin.png",
+      "biography": "You are an administrator.",
+      "owner": "admin@foo.com"
     }
   ]
 }

@@ -21,13 +21,11 @@ class Profile extends React.Component {
             <Header as={'h2'} textAlign={'center'}>Your Public Profile</Header>
             {/* eslint-disable-next-line max-len */}
             {this.props.profiles.map((profile, index) => <ProfileCard key={index} profile={profile} Profiles={Profiles}/>)}
-            <Button content={'Edit Profle'} fluid/>
           </Grid.Column>
 
           <Grid.Column>
             <Header as={'h2'} textAlign={'center'}>Your Favorite Items</Header>
             <Container textAlign='center'>
-              <Button content={'Edit Profle'} />
               <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
               <Button content={'My Items'} />
             </Container>
