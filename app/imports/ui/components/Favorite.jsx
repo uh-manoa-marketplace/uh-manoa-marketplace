@@ -36,6 +36,7 @@ class Favorite extends React.Component {
               />
             </Card.Meta>
             <Card.Description>
+              Category: {this.props.favorite.category}<br/>
               Price: ${this.props.favorite.price}<br/>
               Condition: {this.props.favorite.condition}<br/>
               Description: {this.props.favorite.description}
