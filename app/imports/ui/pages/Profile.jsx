@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Card, Grid, Header, Button, Container, Icon, Image } from 'semantic-ui-react';
+import { Card, Grid, Header, Button, Container } from 'semantic-ui-react';
 import Favorite from '/imports/ui/components/Favorite';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -19,33 +19,15 @@ class Profile extends React.Component {
         <Grid columns={2} divided container>
           <Grid.Column>
             <Header as={'h2'} textAlign={'center'}>Your Public Profile</Header>
-            <Card fluid color={'black'}>
-              <Image src='https://pmcdeadline2.files.wordpress.com/2018/09/6241.jpeg?w=605' wrapped ui={false} />
-              <Card.Content>
-                <Card.Header>Johnathan Foobar III</Card.Header>
-                <Card.Meta>Joined in 2016</Card.Meta>
-                <Card.Description>
-                  Johnathan is a junior majoring in ICS.
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <Button icon labelPosition='right'>
-                  Message
-                  <Icon name='mail' />
-                </Button>
-              </Card.Content>
-            </Card>
             {/* eslint-disable-next-line max-len */}
             {this.props.profiles.map((profile, index) => <ProfileCard key={index} profile={profile} Profiles={Profiles}/>)}
-            <Button content={'Edit Profle'} fluid/>
           </Grid.Column>
 
           <Grid.Column>
-            <Container textAlign='center' >
-              <Button content={'Edit Profle'} />
+            <Header as={'h2'} textAlign={'center'}>Your Favorite Items</Header>
+            <Container textAlign='center'>
               <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
               <Button content={'My Items'} />
-              <Header as={'h2'} textAlign={'center'}>Your Favorite Items</Header>
             </Container>
             <Card.Group itemsPerRow={2}>
               {allItems.map((favorite, index) => <Favorite key={index} favorite={favorite} Favorites={Favorites}/>)}
