@@ -27,7 +27,7 @@ class Profile extends React.Component {
             <Header as={'h2'} textAlign={'center'}>Your Favorite Items</Header>
             <Container textAlign='center'>
               <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
-              <Button content={'My Items'} />
+              <Button content={'My Items'} as={NavLink} exact to="/myitems"/>
             </Container>
             <Card.Group itemsPerRow={2}>
               {allItems.map((favorite, index) => <Favorite key={index} favorite={favorite} Favorites={Favorites}/>)}

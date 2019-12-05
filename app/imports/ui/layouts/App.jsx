@@ -18,6 +18,7 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
+import UserItemsPage from '../pages/UserItemsPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
               <ProtectedRoute path="/profile" component={Profile}/>
               <ProtectedRoute path="/editProfile/:_id" component={EditProfile}/>
               <ProtectedRoute path="/favorites" component={FavoritesPage}/>
+              <ProtectedRoute path="/myitems" component={UserItemsPage}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <AdminProtectedRoute path="/admin" component={ItemsPageAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
