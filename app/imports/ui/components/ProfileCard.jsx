@@ -12,7 +12,7 @@ class ProfileCard extends React.Component {
     return (
         <div>
           <Card fluid color={'black'}>
-            <Image src={this.props.profile.image} wrapped ui={false}/>
+            <Image src={this.props.profile.image} size='medium' wrapped ui={false}/>
             <Card.Content>
               <Card.Header>
                 {this.props.profile.firstName} {this.props.profile.lastName}
