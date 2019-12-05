@@ -201,11 +201,6 @@ const HomepageLayout = () => (
                      src='https://manoa.hawaii.edu/wp/wp-content/uploads/2017/09/campus-manoa-valley.jpg' />
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row>
-            <Grid.Column textAlign='center'>
-              <Button size='huge'>Check Them Out</Button>
-            </Grid.Column>
-          </Grid.Row>
         </Grid>
       </Segment>
     </ResponsiveContainer>
