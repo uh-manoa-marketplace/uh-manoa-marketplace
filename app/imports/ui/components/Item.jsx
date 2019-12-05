@@ -9,10 +9,8 @@ import { Favorites } from '../../api/favorite/Favorites';
 class Item extends React.Component {
 
   myFav(docID, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
-
-    messageUser(user) {
-      console.log(`Attempting to message '${user}'...`);
-    }
+    messageUser(user)
+    console.log(`Attempting to message '${user}'...`);
   };
 
   myFav(docID, itemCategory, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
