@@ -8,10 +8,10 @@ import { Favorites } from '../../api/favorite/Favorites';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Item extends React.Component {
 
-  myFav(docID, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
-    messageUser(user)
-    console.log(`Attempting to message '${user}'...`);
-  };
+  // myFav(docID, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
+  //   messageUser(user);
+  //   console.log(`Attempting to message '${user}'...`);
+  // };
 
   myFav(docID, itemCategory, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
     Favorites.insert(
