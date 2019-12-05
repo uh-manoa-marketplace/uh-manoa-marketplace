@@ -7,6 +7,11 @@ const Items = new Mongo.Collection('Items');
 
 /** Define a schema to specify the structure of each document in the collection. */
 const ItemsSchema = new SimpleSchema({
+  category: {
+    type: String,
+    allowedValues: ['electronics', 'books', 'supplies', 'furniture', 'miscellaneous'],
+    defaultValue: 'electronics',
+  },
   name: String,
   price: Number,
   image: String,

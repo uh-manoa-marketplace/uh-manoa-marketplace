@@ -15,6 +15,11 @@ import SimpleSchema from 'simpl-schema';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
+  category: {
+    type: String,
+    allowedValues: ['electronics', 'books', 'supplies', 'furniture', 'miscellaneous'],
+    defaultValue: 'electronics',
+  },
   name: String,
   price: Number,
   image: String,
@@ -31,9 +36,9 @@ class AddStuff extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { name, price, image, condition, description } = data;
+    const { category, name, price, image, condition, description } = data;
     const owner = Meteor.user().username;
-    Items.insert({ name, price, image, owner, condition, description },
+    Items.insert({ category, name, price, image, owner, condition, description },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -59,6 +64,7 @@ class AddStuff extends React.Component {
                       schema={formSchema}
                       onSubmit={data => this.submit(data, fRef)}>
               <Segment>
+                <SelectField name='category'/>
                 <TextField name='name'/>
                 <NumField name='price'
                           decimal={false}/>

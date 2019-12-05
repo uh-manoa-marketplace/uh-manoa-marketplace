@@ -17,10 +17,11 @@ class ItemAdmin extends React.Component {
     console.log(`Attempting to message '${user}'...`);
   }
 
-  myFav(docID, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
+  myFav(docID, itemCategory, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
     Favorites.insert(
         {
           _id: `${docID}`,
+          category: `${itemCategory}`,
           name: `${itemName}`,
           price: itemPrice,
           image: `${itemImg}`,
@@ -56,6 +57,7 @@ class ItemAdmin extends React.Component {
                   floated='right'
                   onRate={() => this.myFav(
                       this.props.item._id,
+                      this.props.item.category,
                       this.props.item.name,
                       this.props.item.price,
                       this.props.item.image,
@@ -75,6 +77,7 @@ class ItemAdmin extends React.Component {
               />
             </Card.Meta>
             <Card.Description>
+              Category: {this.props.item.category}<br/>
               Price: ${this.props.item.price}<br/>
               Condition: {this.props.item.condition}<br/>
               Description: {this.props.item.description}
