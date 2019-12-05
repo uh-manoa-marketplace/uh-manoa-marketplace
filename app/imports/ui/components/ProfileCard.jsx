@@ -7,17 +7,19 @@ import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class ProfileCard extends React.Component {
-
   render() {
+  const year = new Date();
     return (
         <div>
           <Card fluid color={'black'}>
-            <Image src={this.props.profile.image} wrapped ui={false}/>
+            <Image src={this.props.profile.image} size='medium' wrapped ui={false}/>
             <Card.Content>
               <Card.Header>
                 {this.props.profile.firstName} {this.props.profile.lastName}
               </Card.Header>
-              <Card.Meta>Joined in 2016</Card.Meta>
+              {/* Here I just added a time function that grabs the current year. Doesn't technically work but it's
+               something more dynamic. Maybe for M3 we could add a date joined to the profile schema */}
+              <Card.Meta>Joined in {year.getFullYear()}</Card.Meta>
               <Card.Description>
                 {this.props.profile.biography}
               </Card.Description>

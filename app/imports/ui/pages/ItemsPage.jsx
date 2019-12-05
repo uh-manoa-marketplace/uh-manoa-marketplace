@@ -72,11 +72,12 @@ class ItemsPage extends React.Component {
 
     return (
         <Container>
-          <Header as='h2' textAlign='center'>List of Items</Header>
+          <Header as='h2'
+                  textAlign='center'>List of Items</Header>
           <Container className='searchField'>
             <Input
                 fluid
-                icon = 'search'
+                icon='search'
                 type='text'
                 value={this.state.search}
                 onChange={this.updateSearch.bind(this)}
@@ -85,14 +86,20 @@ class ItemsPage extends React.Component {
                       defaultValue='all'
                       options={choices}
                       onChange={this.selectedChoice}
-                      value ={value}
+                      value={value}
                       selection
                   />
                 }
             />
           </Container>
           <Card.Group>
-            {findItems.map((item, index) => <Item key={index} item={item} Items={Items}/>)}
+            {filteredItems.map((item, index) => <Item
+                key={index}
+                item={item}
+                Items={Items}/>)}
+            {findItems.map((item, index) => <Item key={index}
+                                                  item={item}
+                                                  Items={Items}/>)}
           </Card.Group>
         </Container>
     );

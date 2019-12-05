@@ -38,10 +38,10 @@
       "owner": "john@foo.com"
     },
     {
-      "firstName": "Admin",
-      "lastName": "",
+      "firstName": "AdminFirst",
+      "lastName": "AdminLast",
       "image": "https://www.zoho.com/analytics/help/images/admin.png",
-      "biography": "You are an administrator.",
+      "biography": "I am an administrator.",
       "owner": "admin@foo.com"
     }
   ]

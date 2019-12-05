@@ -8,9 +8,10 @@ import { Favorites } from '../../api/favorite/Favorites';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Item extends React.Component {
 
-  messageUser(user) {
-    console.log(`Attempting to message '${user}'...`);
-  }
+  // myFav(docID, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
+  //   messageUser(user);
+  //   console.log(`Attempting to message '${user}'...`);
+  // };
 
   myFav(docID, itemCategory, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
     Favorites.insert(
@@ -42,7 +43,9 @@ class Item extends React.Component {
     return (
         <Card centered>
           <Card.Content>
-            <Image centered size='medium' src={this.props.item.image}/>
+            <Image centered
+                   size='medium'
+                   src={this.props.item.image}/>
           </Card.Content>
           <Card.Content>
             <Card.Header>
