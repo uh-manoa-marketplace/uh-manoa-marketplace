@@ -5,6 +5,7 @@ import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-rea
 import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '../../api/profiles/Profile';
 
+
 /**
  * Signup component is similar to signin component, but we create a new user instead.
  */
@@ -22,16 +23,16 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    // Added more to this.state in order to accommodate for our Profiles collection below.
+    const { email, password, firstName, lastName, image, biography } = this.state;
+    Accounts.createUser({ email, username: email, password, firstName, lastName, image, biography }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
         this.setState({ error: '', redirectToReferer: true });
-        Profiles.insert({
-          firstName: 'first name', lastName: 'last name', image: '/UH-logo.png', biography: 'your bio', owner: email,
-        });
+        console.log('IT worked');
       }
+    Profiles.insert({ firstName: firstName, lastName: lastName, image: image, biography: biography, owner: email });
     });
   }
 
@@ -58,6 +59,30 @@ class Signup extends React.Component {
                   name="email"
                   type="email"
                   placeholder="E-mail address"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                    label='First Name'
+                    name='firstName'
+                    type='text'
+                    onChange={this.handleChange}/>
+                <Form.Input
+                  label='LastName'
+                  name='lastName'
+                  type='text'
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                  label='Profile Picture (As a Link)'
+                  name='image'
+                  type='text'
+                  onChange={this.handleChange}
+                />
+                <Form.TextArea
+                  label='Biography'
+                  name='biography'
+                  type='text'
+                  placeholder='Tell something about yourself'
                   onChange={this.handleChange}
                 />
                 <Form.Input
