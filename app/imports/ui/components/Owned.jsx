@@ -1,10 +1,15 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Button, Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { Items } from '../../api/item/Items';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Item extends React.Component {
+
+  removeItem(docID) {
+    Items.remove(docID);
+  }
 
   render() {
     return (
@@ -25,6 +30,13 @@ class Item extends React.Component {
               Condition: {this.props.item.condition}<br/>
               Description: {this.props.item.description}
             </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Button
+                fluid
+                color='red'
+                onClick={() => this.removeItem(this.props.item._id)}>REMOVE
+            </Button>
           </Card.Content>
         </Card>
     );

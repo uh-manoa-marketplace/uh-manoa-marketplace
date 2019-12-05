@@ -10,13 +10,13 @@ import Owned from '../components/Owned';
 class UserItemsPage extends React.Component {
   render() {
 
-    const allItems = _.where(this.props.items, { owner: 'john@foo.com' });
+    const filteredItems = _.where(this.props.items, { owner: 'john@foo.com' });
 
     return (
         <Container>
           <Header as='h2' textAlign='center'>My Items</Header>
           <Card.Group>
-            {allItems.map((item, index) => <Owned key={index} item={item} Items={Items}/>)}
+            {filteredItems.map((item, index) => <Owned key={index} item={item} Items={Items}/>)}
           </Card.Group>
         </Container>
     );
