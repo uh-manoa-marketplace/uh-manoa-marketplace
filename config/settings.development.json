@@ -13,6 +13,7 @@
   "defaultItems": [
     { "name": "Mini Fridge",
       "price": 90,
+      "category": "electronics",
       "image": "https://target.scene7.com/is/image/Target/GUEST_c26aeeb0-137f-4125-bf78-1bb21e729eda?wid=488&hei=488&fmt=pjpeg",
       "owner": "john@foo.com",
       "condition": "good",
@@ -20,6 +21,7 @@
     },
     { "name": "Introduction to Algorithms, Third Edition",
       "price": 20,
+      "category": "books",
       "image": "https://i.pinimg.com/originals/7e/5f/1c/7e5f1cb59b43c91c1c5b309814559fae.jpg",
       "owner": "admin@foo.com",
       "condition": "excellent",
@@ -34,6 +36,13 @@
       "image": "https://pmcdeadline2.files.wordpress.com/2018/09/6241.jpeg?w=605",
       "biography": "Johnathan is a junior majoring in ICS.",
       "owner": "john@foo.com"
+    },
+    {
+      "firstName": "AdminFirst",
+      "lastName": "AdminLast",
+      "image": "https://www.zoho.com/analytics/help/images/admin.png",
+      "biography": "I am an administrator.",
+      "owner": "admin@foo.com"
     }
   ]
 }
