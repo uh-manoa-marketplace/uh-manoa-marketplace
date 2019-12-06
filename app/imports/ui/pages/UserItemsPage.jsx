@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Header, Card, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Accounts } from 'meteor/accounts-base';
 import { Items } from '../../api/item/Items';
 import Owned from '../components/Owned';
 
@@ -10,7 +11,8 @@ import Owned from '../components/Owned';
 class UserItemsPage extends React.Component {
   render() {
 
-    const filteredItems = _.where(this.props.items, { owner: 'john@foo.com' });
+    const currentUser = 'john@foo.com';
+    const filteredItems = _.where(this.props.items, { owner: currentUser });
 
     return (
         <Container>
