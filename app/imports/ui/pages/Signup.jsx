@@ -30,15 +30,40 @@ class Signup extends React.Component {
         this.setState({ error: err.reason });
       } else {
         this.setState({ error: '', redirectToReferer: true });
-        console.log('IT worked');
+        // Found a potential issue, if the user inserts a space within Image or Biography input, the Profiles page won't
+        // work properly. I will do further research on why this is the case. However the implementation is for new
+        // users being able to leave the images and/or biography input blank is okay.
+        // When the creation of new account is successfully we have to go through three verifications:
+        // First when the image URL input is left blank, we assign it to our default UH logo. However, the biography
+        // is filled.
+        if (image === undefined) {
+          const backupImage = '/UH-logo.png';
+          Profiles.insert(
+              { firstName: firstName, lastName: lastName, image: backupImage, biography: biography, owner: email },
+          );
+        }
+        // Second is when the biography isn't filled out and the image URL is filled out.
+        // Same thing as before, just reassigning and adding it to the Profiles Collection.
+        if (biography === undefined) {
+          const backupBiography = 'I am a University of Hawaii member.';
+          Profiles.insert(
+              { firstName: firstName, lastName: lastName, image: image, biography: backupBiography, owner: email },
+          );
+        }
+        // Lastly is the ideal case where the user actually takes the time to fill out every on SignUp. If they
+        // filled the field with at least something in there (could be anything).
+        if ((image && biography) !== undefined) {
+          Profiles.insert(
+              { firstName: firstName, lastName: lastName, image: image, biography: biography, owner: email },
+          );
+        }
       }
-    Profiles.insert({ firstName: firstName, lastName: lastName, image: image, biography: biography, owner: email });
     });
   }
 
-  /** Display the signup form. Redirect to add page after successful registration and login. */
+  /** Display the signup form. Redirect to ListItem page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/add' } };
+    const { from } = this.props.location.state || { from: { pathname: '/list' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
