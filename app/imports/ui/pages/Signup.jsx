@@ -25,20 +25,53 @@ class Signup extends React.Component {
   submit = () => {
     // Added more to this.state in order to accommodate for our Profiles collection below.
     const { email, password, firstName, lastName, image, biography } = this.state;
+    const backupImage = '/UH-logo.png';
+    const backupBiography = 'I am a University of Hawaii member.';
     Accounts.createUser({ email, username: email, password, firstName, lastName, image, biography }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
         this.setState({ error: '', redirectToReferer: true });
-        console.log('IT worked');
+        // Found a potential issue, if the user inserts a space within Image or Biography input, the Profiles page won't
+        // work properly. I will do further research on why this is the case. However the implementation is for new
+        // users being able to leave the images and/or biography input blank is okay.
+        // When the creation of new account is successfully we have to go through four verifications:
+        // First when the image URL and biography are left blank, we assign it to our default UH logo and biography.
+        if (image === undefined && biography === undefined) {
+          Profiles.insert(
+              {
+                firstName: firstName,
+                lastName: lastName,
+                image: backupImage,
+                biography: backupBiography,
+                owner: email,
+              },
+          );
+          // Second is when the image need to be set to default.
+        } else if (image === undefined) {
+          Profiles.insert(
+              { firstName: firstName, lastName: lastName, image: backupImage, biography: biography, owner: email },
+          );
+        } else if (biography === undefined) {
+        // Third is when the biography isn't filled out and the image URL is filled out.
+        // Same thing as before, just reassigning and adding it to the Profiles Collection.
+          Profiles.insert(
+              { firstName: firstName, lastName: lastName, image: image, biography: backupBiography, owner: email },
+          );
+        } else if ((image && biography) !== undefined) {
+        // Lastly is the ideal case where the user actually takes the time to fill out every on SignUp. If they
+        // filled the field with at least something in there (could be anything).
+          Profiles.insert(
+              { firstName: firstName, lastName: lastName, image: image, biography: biography, owner: email },
+          );
+        }
       }
-    Profiles.insert({ firstName: firstName, lastName: lastName, image: image, biography: biography, owner: email });
     });
   }
 
-  /** Display the signup form. Redirect to add page after successful registration and login. */
+  /** Display the signup form. Redirect to ListItem page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/add' } };
+    const { from } = this.props.location.state || { from: { pathname: '/list' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
