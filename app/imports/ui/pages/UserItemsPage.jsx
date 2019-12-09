@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Header, Card, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { Accounts } from 'meteor/accounts-base';
 import { Items } from '../../api/item/Items';
 import Owned from '../components/Owned';
 
@@ -11,7 +10,8 @@ import Owned from '../components/Owned';
 class UserItemsPage extends React.Component {
   render() {
 
-    const currentUser = 'john@foo.com';
+    const currentUser = Meteor.user() ? Meteor.user().username : '';
+    console.log(currentUser);
     const filteredItems = _.where(this.props.items, { owner: currentUser });
 
     return (
@@ -29,6 +29,7 @@ class UserItemsPage extends React.Component {
 UserItemsPage.propTypes = {
   items: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
+  currentUser: PropTypes.string,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
