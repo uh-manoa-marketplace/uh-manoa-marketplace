@@ -91,7 +91,7 @@ class Signup extends React.Component {
                   iconPosition="left"
                   name="email"
                   type="email"
-                  placeholder="E-mail address"
+                  placeholder="johnnyAppleseed@hawaii.edu"
                   required={true}
                   onChange={this.handleChange}
                 />
@@ -99,12 +99,14 @@ class Signup extends React.Component {
                     label='First Name'
                     name='firstName'
                     type='text'
+                    placeholder='Johnny'
                     required={true}
                     onChange={this.handleChange}/>
                 <Form.Input
                   label='LastName'
                   name='lastName'
                   type='text'
+                  placeholder='Appleseed'
                   required={true}
                   onChange={this.handleChange}
                 />
@@ -112,6 +114,7 @@ class Signup extends React.Component {
                   label='Profile Picture (As a Link)'
                   name='image'
                   type='text'
+                  placeholder='https://hosting-site.com/your-image.jpg'
                   onChange={this.handleChange}
                 />
                 <Form.TextArea
