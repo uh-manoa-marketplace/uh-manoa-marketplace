@@ -73,7 +73,7 @@ class ItemsPage extends React.Component {
     return (
         <Container>
           <Header as='h2'
-                  textAlign='center'>List of Items</Header>
+                  textAlign='center'>Items for Sale</Header>
           <Container className='searchField'>
             <Input
                 fluid
