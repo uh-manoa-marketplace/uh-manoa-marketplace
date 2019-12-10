@@ -31,12 +31,16 @@ class Item extends React.Component {
               Description: {this.props.item.description}
             </Card.Description>
           </Card.Content>
-          <Card.Content extra>
-            <Button
-                fluid
-                color='red'
-                onClick={() => this.removeItem(this.props.item._id)}>REMOVE
-            </Button>
+          <Card.Content extra textAlign='center'>
+            <Button.Group>
+              <Button
+                  color='red'
+                  onClick={() => this.removeItem(this.props.item._id)}>REMOVE
+              </Button>
+              <Button.Or />
+              <Button positive>EDIT
+              </Button>
+            </Button.Group>
           </Card.Content>
         </Card>
     );
