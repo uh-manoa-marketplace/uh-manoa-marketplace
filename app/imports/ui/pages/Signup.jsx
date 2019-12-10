@@ -18,7 +18,9 @@ class Signup extends React.Component {
 
   /** Update the form controls each time the user interacts with them. */
   handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value });
+    if (value.endsWith('@hawaii.edu')) {
+      this.setState({ [name]: value });
+    }
   }
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
@@ -30,10 +32,14 @@ class Signup extends React.Component {
         this.setState({ error: err.reason });
       } else {
         this.setState({ error: '', redirectToReferer: true });
-        console.log('IT worked');
+        // console.log('IT worked');
       }
     Profiles.insert({ firstName: firstName, lastName: lastName, image: image, biography: biography, owner: email });
     });
+  }
+
+  state = {
+    emailError: true,
   }
 
   /** Display the signup form. Redirect to add page after successful registration and login. */
@@ -53,27 +59,30 @@ class Signup extends React.Component {
             <Form onSubmit={this.submit}>
               <Segment stacked>
                 <Form.Input
-                  label="Email"
+                  label="UH Email"
                   icon="user"
                   iconPosition="left"
                   name="email"
                   type="email"
-                  placeholder="E-mail address"
+                  placeholder="example@hawaii.edu"
+                  error={this.state.emailError}
                   onChange={this.handleChange}
                 />
                 <Form.Input
                     label='First Name'
                     name='firstName'
                     type='text'
+                    placeholder="John"
                     onChange={this.handleChange}/>
                 <Form.Input
-                  label='LastName'
+                  label='Last Name'
                   name='lastName'
                   type='text'
+                  placeholder="Doe"
                   onChange={this.handleChange}
                 />
                 <Form.Input
-                  label='Profile Picture (As a Link)'
+                  label='Profile Picture (As a link)'
                   name='image'
                   type='text'
                   onChange={this.handleChange}
@@ -82,7 +91,7 @@ class Signup extends React.Component {
                   label='Biography'
                   name='biography'
                   type='text'
-                  placeholder='Tell something about yourself'
+                  placeholder='Introduce yourself!'
                   onChange={this.handleChange}
                 />
                 <Form.Input
@@ -94,7 +103,10 @@ class Signup extends React.Component {
                   type="password"
                   onChange={this.handleChange}
                 />
-                <Form.Button content="Submit"/>
+                <Form.Button
+                    content="Submit"
+                    // disabled={!this.state.email}
+                />
               </Segment>
             </Form>
             <Message>
