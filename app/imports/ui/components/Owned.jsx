@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Items } from '../../api/item/Items';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -38,7 +38,8 @@ class Item extends React.Component {
                   onClick={() => this.removeItem(this.props.item._id)}>REMOVE
               </Button>
               <Button.Or />
-              <Button positive>EDIT
+              <Button positive>
+                <Link to={`/editItem/${this.props.item._id}`}>EDIT</Link>
               </Button>
             </Button.Group>
           </Card.Content>
