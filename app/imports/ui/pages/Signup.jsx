@@ -92,17 +92,20 @@ class Signup extends React.Component {
                   name="email"
                   type="email"
                   placeholder="E-mail address"
+                  required={true}
                   onChange={this.handleChange}
                 />
                 <Form.Input
                     label='First Name'
                     name='firstName'
                     type='text'
+                    required={true}
                     onChange={this.handleChange}/>
                 <Form.Input
                   label='LastName'
                   name='lastName'
                   type='text'
+                  required={true}
                   onChange={this.handleChange}
                 />
                 <Form.Input
@@ -125,6 +128,7 @@ class Signup extends React.Component {
                   name="password"
                   placeholder="Password"
                   type="password"
+                  required={true}
                   onChange={this.handleChange}
                 />
                 <Form.Button content="Submit"/>
