@@ -5,3 +5,12 @@
   font-size: 200%;
   font-weight: bold;
 }
+.landing {
+  background-color: #1B1C1D;
+  padding: 135px;
+}
+
+.footer {
+  background-color: #1B1C1D;
+  color: white;
+}
