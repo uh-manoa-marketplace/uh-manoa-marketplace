@@ -4,8 +4,6 @@ import { Items } from '../../api/item/Items';
 import { Favorites } from '../../api/favorite/Favorites';
 import { Profiles } from '../../api/profiles/Profile';
 
-/* eslint-disable no-console */
-
 /** Initialize the database with a default data document. */
 function addData(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);

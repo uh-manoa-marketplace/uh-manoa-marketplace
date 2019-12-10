@@ -1,52 +1,28 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader } from 'semantic-ui-react';
-import { Stuffs } from '/imports/api/stuff/Stuff';
-import StuffItem from '/imports/ui/components/StuffItem';
-import { withTracker } from 'meteor/react-meteor-data';
+import { Feed } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Messages extends React.Component {
-
-  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
-  /** Render the page once subscriptions have been received. */
-  renderPage() {
     return (
-        <Container>
-          <Header as="h2" textAlign="center">List Stuff</Header>
-          <Table celled>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Condition</Table.HeaderCell>
-                <Table.HeaderCell>Edit</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
-            </Table.Body>
-          </Table>
-        </Container>
+        <Feed.Event >
+          <Feed.Content>
+            <Feed.Date content={this.props.message.time.toLocaleDateString('en-US')} />
+            <Feed.Summary>
+              {this.props.message.message}
+            </Feed.Summary>
+          </Feed.Content>
+        </Feed.Event>
     );
   }
 }
+
+/** Require a document to be passed to this component. */
 Messages.propTypes = {
-  stuffs: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired,
+  message: PropTypes.object.isRequired,
 };
 
-/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(() => {
-  // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Stuff');
-  return {
-    stuffs: Stuffs.find({}).fetch(),
-    ready: subscription.ready(),
-  };
-})(Messages);
+/** Wrap this component in withRouter since we use the <Link> React Router element. */
+export default withRouter(Messages);
