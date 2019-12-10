@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 class Landing extends React.Component {
   render() {
     return (
-        <div className='landing'>
+        <div className='landing background'>
           <Grid container
                 centered
                 stackable>
@@ -17,7 +17,6 @@ class Landing extends React.Component {
                         fontSize: '4em',
                         fontWeight: 'normal',
                         marginBottom: 0,
-                        marginTop: '3em',
                       }}>
                 UH Manoa Marketplace
               </Header>
