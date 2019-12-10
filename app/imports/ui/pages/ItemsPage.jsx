@@ -93,10 +93,6 @@ class ItemsPage extends React.Component {
             />
           </Container>
           <Card.Group>
-            {filteredItems.map((item, index) => <Item
-                key={index}
-                item={item}
-                Items={Items}/>)}
             {findItems.map((item, index) => <Item key={index}
                                                   item={item}
                                                   Items={Items}/>)}
