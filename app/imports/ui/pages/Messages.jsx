@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 class Messages extends React.Component {
   render() {
     return (
-        <Feed.Event >
+        <Feed.Event>
           <Feed.Content>
             <Feed.Date content={this.props.message.time.toLocaleDateString('en-US')} />
             <Feed.Summary>

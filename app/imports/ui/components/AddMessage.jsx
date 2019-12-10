@@ -8,7 +8,7 @@ import ErrorsField from 'uniforms-semantic/ErrorsField';
 import swal from 'sweetalert';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import PropTypes from 'prop-types';
-import { Notes, NoteSchema } from '../../api/note/Notes';
+import { messages, MessageSchema } from '../../api/message/messages';
 
 
 /** Renders the Page for adding a document. */
@@ -17,7 +17,7 @@ class AddMessage extends React.Component {
   /** On submit, insert the data. */
   submit(data, formRef) {
     const { buyer, seller, message, time } = data;
-    Notes.insert({ buyer, seller, message, time },
+    messages.insert({ buyer, seller, message, time },
         (error) => {
           if (error) {
             swal('Message Error', error.message, 'error');
@@ -32,7 +32,7 @@ class AddMessage extends React.Component {
   render() {
     let fRef = null;
     return (
-        <AutoForm ref={ref => { fRef = ref; }} schema={NoteSchema} onSubmit={data => this.submit(data, fRef)}>
+        <AutoForm ref={ref => { fRef = ref; }} schema={MessageSchema} onSubmit={data => this.submit(data, fRef)}>
           <Segment>
             <TextField label="Send a Message"
                        name='message'/>
@@ -53,7 +53,6 @@ class AddMessage extends React.Component {
 AddMessage.propTypes = {
   buyer: PropTypes.string.isRequired,
   seller: PropTypes.string.isRequired,
-  contactId: PropTypes.string.isRequired,
 };
 
 export default AddMessage;
