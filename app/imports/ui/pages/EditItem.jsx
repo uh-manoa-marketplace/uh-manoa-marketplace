@@ -45,7 +45,7 @@ class EditItem extends React.Component {
                 <TextField name='image'/>
                 <SelectField name='condition'/>
                 <LongTextField name='description'/>
-                <SubmitField value='Submit'/>
+                <SubmitField value='Submit Changes'/>
                 <ErrorsField/>
                 <HiddenField name='owner'/>
               </Segment>
