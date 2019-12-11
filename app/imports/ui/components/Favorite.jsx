@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Button, Card, Icon, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Favorites } from '../../api/favorite/Favorites';
@@ -9,10 +9,6 @@ class Favorite extends React.Component {
 
   removeItem(docID) {
     Favorites.remove(docID);
-  }
-
-  messageUser(user) {
-    console.log(`Attempting to message '${user}'...`);
   }
 
   render() {
@@ -27,13 +23,12 @@ class Favorite extends React.Component {
             </Card.Header>
             <Card.Meta>
               Owner: {this.props.favorite.owner}
-              <Button
-                  floated='right'
-                  compact
-                  size='mini'
-                  icon='paper plane'
-                  onClick={() => this.messageUser(this.props.favorite.owner)}
-              />
+              <Button floated='right' compact size='mini'>
+                {/* eslint-disable-next-line max-len */}
+                <a href={`mailto: ${this.props.favorite.owner}?subject=Purchasing your ${this.props.favorite.name}&body=Hi, I'm interested in purchasing your ${this.props.favorite.name}.`}>
+                  <Icon name={'paper plane'}/>
+                </a>
+              </Button>
             </Card.Meta>
             <Card.Description>
               Category: {this.props.favorite.category}<br/>
