@@ -10,15 +10,15 @@ class Footer extends React.Component {
           <div style={divStyle}
                className="footer">
             <hr/>
-            {/*<Grid container*/}
-            {/*      centered*/}
-            {/*      stackable>*/}
-            {/*  <Grid.Column textAlign='center'>*/}
-            {/*    Department of Information and Computer Sciences<br/>*/}
-            {/*    University of Hawaii<br/>*/}
-            {/*    Honolulu, HI 96822<br/>*/}
-            {/*  </Grid.Column>*/}
-            {/*</Grid>*/}
+            <Grid container
+                  centered
+                  stackable>
+              <Grid.Column textAlign='center'>
+                UH Manoa Marketplace<br/>
+                University of Hawaii<br/>
+                Honolulu, HI 96822<br/>
+              </Grid.Column>
+            </Grid>
           </div>
         </footer>
     );
