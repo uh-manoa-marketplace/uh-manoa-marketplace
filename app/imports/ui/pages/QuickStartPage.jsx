@@ -20,7 +20,7 @@ class QuickStartPage extends React.Component {
                       }}>
                 Quick Start Guide
               </Header>
-              <Header as='h1'
+              <Header as="h1"
                       inverted
                       style={{
                         fontSize: '3em',
@@ -29,11 +29,23 @@ class QuickStartPage extends React.Component {
                       }}>
                 Buying
               </Header>
-              <Header inverted>
-                Browse through the items for sale
+              <Header as="h1"
+                      inverted
+                      style={{
+                        fontSize: '1em',
+                        fontWeight: 'normal',
+                        marginTop: '1.5em',
+                      }}>
+                Browse the items listed in the Items for Sale tab
               </Header>
-              <Header inverted>
-                Click on the <Icon name='heart outline'/> icon to add to your favorites
+              <Header as="h1"
+                      inverted
+                      style={{
+                        fontSize: '1em',
+                        fontWeight: 'normal',
+                        marginTop: '1.5em',
+                      }}>
+                Click on the <Icon name='heart outline' size='small'/>icon to add an item to your favorites
               </Header>
               <Header as='h1'
                       inverted
