@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Rating, Button, Form } from 'semantic-ui-react';
+import { Card, Image, Rating, Button, Form, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -11,10 +11,6 @@ class ItemAdmin extends React.Component {
 
   removeItem(docID) {
     this.props.Items.remove(docID);
-  }
-
-  messageUser(user) {
-    console.log(`Attempting to message '${user}'...`);
   }
 
   myFav(docID, itemCategory, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
@@ -68,13 +64,12 @@ class ItemAdmin extends React.Component {
             </Card.Header>
             <Card.Meta>
               Owner: {this.props.item.owner}
-              <Button
-                  floated='right'
-                  compact
-                  size='mini'
-                  icon='paper plane'
-                  onClick={() => this.messageUser(this.props.item.owner)}
-              />
+              <Button floated='right' compact size='mini'>
+                {/* eslint-disable-next-line max-len */}
+                <a href={`mailto: ${this.props.item.owner}?subject=Purchasing your ${this.props.item.name}&body=Hi, I'm interested in purchasing your ${this.props.item.name}.`}>
+                  <Icon name={'paper plane'}/>
+                </a>
+              </Button>
             </Card.Meta>
             <Card.Description>
               Category: {this.props.item.category}<br/>
