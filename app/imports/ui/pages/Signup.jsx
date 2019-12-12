@@ -27,7 +27,9 @@ class Signup extends React.Component {
     const { email, password, firstName, lastName, image, biography } = this.state;
     const backupImage = '/UH-logo.png';
     const backupBiography = 'I am a University of Hawaii member.';
-    Accounts.createUser({ email, username: email, password, firstName, lastName, image, biography }, (err) => {
+    const favorites = [];
+    // eslint-disable-next-line max-len
+    Accounts.createUser({ email, username: email, password, firstName, lastName, image, biography, favorites }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
@@ -44,25 +46,47 @@ class Signup extends React.Component {
                 lastName: lastName,
                 image: backupImage,
                 biography: backupBiography,
+                favorites: favorites,
                 owner: email,
               },
           );
           // Second is when the image need to be set to default.
         } else if (image === undefined) {
           Profiles.insert(
-              { firstName: firstName, lastName: lastName, image: backupImage, biography: biography, owner: email },
+              {
+                firstName: firstName,
+                lastName: lastName,
+                image: backupImage,
+                biography: biography,
+                favorites: favorites,
+                owner: email,
+              },
           );
         } else if (biography === undefined) {
         // Third is when the biography isn't filled out and the image URL is filled out.
         // Same thing as before, just reassigning and adding it to the Profiles Collection.
           Profiles.insert(
-              { firstName: firstName, lastName: lastName, image: image, biography: backupBiography, owner: email },
+              {
+                firstName: firstName,
+                lastName: lastName,
+                image: image,
+                biography: backupBiography,
+                favorites: favorites,
+                owner: email,
+              },
           );
         } else if ((image && biography) !== undefined) {
         // Lastly is the ideal case where the user actually takes the time to fill out every on SignUp. If they
         // filled the field with at least something in there (could be anything).
           Profiles.insert(
-              { firstName: firstName, lastName: lastName, image: image, biography: biography, owner: email },
+              {
+                firstName: firstName,
+                lastName: lastName,
+                image: image,
+                biography: biography,
+                favorites: favorites,
+                owner: email,
+              },
           );
         }
       }
