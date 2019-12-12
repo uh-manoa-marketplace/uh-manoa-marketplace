@@ -27,9 +27,8 @@ class Signup extends React.Component {
     const { email, password, firstName, lastName, image, biography } = this.state;
     const backupImage = '/UH-logo.png';
     const backupBiography = 'I am a University of Hawaii member.';
-    const favorites = [];
     // eslint-disable-next-line max-len
-    Accounts.createUser({ email, username: email, password, firstName, lastName, image, biography, favorites }, (err) => {
+    Accounts.createUser({ email, username: email, password, firstName, lastName, image, biography }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
@@ -46,7 +45,6 @@ class Signup extends React.Component {
                 lastName: lastName,
                 image: backupImage,
                 biography: backupBiography,
-                favorites: favorites,
                 owner: email,
               },
           );
@@ -58,7 +56,6 @@ class Signup extends React.Component {
                 lastName: lastName,
                 image: backupImage,
                 biography: biography,
-                favorites: favorites,
                 owner: email,
               },
           );
@@ -71,7 +68,6 @@ class Signup extends React.Component {
                 lastName: lastName,
                 image: image,
                 biography: backupBiography,
-                favorites: favorites,
                 owner: email,
               },
           );
@@ -84,7 +80,6 @@ class Signup extends React.Component {
                 lastName: lastName,
                 image: image,
                 biography: biography,
-                favorites: favorites,
                 owner: email,
               },
           );
