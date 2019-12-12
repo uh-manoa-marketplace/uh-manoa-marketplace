@@ -5,6 +5,7 @@ import Item from '/imports/ui/components/Item';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Items } from '../../api/item/Items';
+import { Favorites } from '../../api/favorite/Favorites';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ItemsPage extends React.Component {
@@ -105,6 +106,7 @@ class ItemsPage extends React.Component {
 /** Require an array of Stuff documents in the props. */
 ItemsPage.propTypes = {
   items: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -112,8 +114,10 @@ ItemsPage.propTypes = {
 export default withTracker(() => {
   // Get access to Items documents.
   const subscription = Meteor.subscribe('Items');
+  const subscription2 = Meteor.subscribe('Favorites');
   return {
     items: Items.find({}).fetch(),
-    ready: subscription.ready(),
+    favorites: Favorites.find({}).fetch(),
+    ready: subscription.ready() && subscription2.ready(),
   };
 })(ItemsPage);

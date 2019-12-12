@@ -11,6 +11,7 @@ class FavoritesPage extends React.Component {
   render() {
 
     const allItems = this.props.favorites; // Will be changed to favorited items only
+    // console.log();
 
     return (
         <Grid container>

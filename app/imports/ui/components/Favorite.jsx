@@ -2,13 +2,25 @@ import React from 'react';
 import { Button, Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { Meteor } from 'meteor/meteor';
 import { Favorites } from '../../api/favorite/Favorites';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Favorite extends React.Component {
 
-  removeItem(docID) {
-    Favorites.remove(docID);
+  removeItem(docID, itemLikedBy) {
+    const currentUser = Meteor.user() ? Meteor.user().username : '';
+    const findUser = _.where(itemLikedBy, { liked: currentUser });
+    console.log(`Before: ${itemLikedBy}`);
+    if (findUser) {
+      Favorites.update(
+          { _id: docID },
+          { $pull: { liked: `${currentUser}` } },
+      );
+    }
+    // Favorites.up({ _id: docID }, { liked: `${currentUser}` });
+    // Favorites.remove({ itemLikeBy: itemLikedBy });
+    // console.log(itemLikedBy);
   }
 
   messageUser(user) {
@@ -46,7 +58,7 @@ class Favorite extends React.Component {
             <Button
                 fluid
                 color='red'
-                onClick={() => this.removeItem(this.props.favorite._id)}>REMOVE
+                onClick={() => this.removeItem(this.props.favorite._id, this.props.favorite.liked)}>REMOVE
             </Button>
           </Card.Content>
         </Card>

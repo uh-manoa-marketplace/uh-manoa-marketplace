@@ -39,8 +39,8 @@ Meteor.publish('ItemsAdmin', function publish() {
 
 Meteor.publish('Favorites', function publish() {
   if (this.userId) {
-    // const username = Meteor.users.findOne(this.userId).username;
-    return Favorites.find();
+    const username = Meteor.users.findOne(this.userId).username;
+    return Favorites.find({ liked: username });
   }
   return this.ready();
 });
