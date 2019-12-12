@@ -45,7 +45,16 @@ class QuickStartPage extends React.Component {
                         fontWeight: 'normal',
                         marginTop: '1.5em',
                       }}>
-                Click on the <Icon name='heart outline' size='small'/>icon to add an item to your favorites
+                Click on the <Icon name='heart'/>to add an item to your favorites
+              </Header>
+              <Header as="h1"
+                      inverted
+                      style={{
+                        fontSize: '1em',
+                        fontWeight: 'normal',
+                        marginTop: '1.5em',
+                      }}>
+                Click on the <Icon name='paper plane'/>on an item to message the seller
               </Header>
               <Header as='h1'
                       inverted
