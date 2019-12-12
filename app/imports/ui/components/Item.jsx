@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { Favorites } from '../../api/favorite/Favorites';
+import { Items } from '../../api/item/Items';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Item extends React.Component {
@@ -15,14 +16,7 @@ class Item extends React.Component {
   // };
 
   myFav(docID, itemCategory, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription, itemLikedBy) {
-    const currentUser = Meteor.user() ? Meteor.user().username : '';
-    const findUser = _.where(itemLikedBy, { liked: currentUser });
-    const findItemInFavorites = _.where(docID, { _id: docID });
-    if (findUser) {
-      console.log('Found the user');
-    } else {
-      console.log('Couldnt find user');
-    }
+    // const currentUser = Meteor.user() ? Meteor.user().username : '';
     Favorites.insert(
         {
           _id: `${docID}`,
@@ -48,17 +42,14 @@ class Item extends React.Component {
           }
         },
     );
-    console.log(
-        `Favorites now contains:
-        \n${docID}
-        \n${itemName}\n${itemPrice}\n${itemImg}\n${itemOwner}\n${itemCondition}\n${itemDescription}\n${itemLikedBy}`,
-    );
+    // This updates the Item that was selected to be store into favorites. The user is added to the liked array.
+    Items.update({ _id: docID }, { $push: { liked: itemLikedBy } });
   }
 
   render() {
     const currentUser = Meteor.user() ? Meteor.user().username : '';
     // console.log(`currentUser = ${currentUser}`);
-    this.props.item.liked = currentUser;
+    const event = currentUser;
     // console.log(`this.props.item.liked = ${this.props.item.liked}`);
     return (
         <Card centered>
@@ -73,6 +64,7 @@ class Item extends React.Component {
               <Rating
                   icon='heart'
                   floated='right'
+                  // defaultRating={1} if user inside or 0 if not.
                   onRate={
                     () => this.myFav(
                         this.props.item._id,
@@ -83,7 +75,7 @@ class Item extends React.Component {
                         this.props.item.owner,
                         this.props.item.condition,
                         this.props.item.description,
-                        this.props.item.liked,
+                        event,
                     )}/>
             </Card.Header>
             <Card.Meta>
@@ -96,6 +88,7 @@ class Item extends React.Component {
               </Button>
             </Card.Meta>
             <Card.Description>
+              Likes: {}<br/>
               Category: {this.props.item.category}<br/>
               Price: ${this.props.item.price}<br/>
               Condition: {this.props.item.condition}<br/>
@@ -110,6 +103,7 @@ class Item extends React.Component {
 /** Require a document to be passed to this component. */
 Item.propTypes = {
   item: PropTypes.object.isRequired,
+  favorite: PropTypes.object,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
