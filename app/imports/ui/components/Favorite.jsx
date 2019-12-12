@@ -24,6 +24,8 @@ class Favorite extends React.Component {
   }
 
   render() {
+  const numOfLikes = _.uniq(_.map(this.props.favorite.liked, function (e) { return e; }));
+  // console.log(numOfLikes.length);
     return (
         <Card centered>
           <Card.Content>
@@ -43,6 +45,7 @@ class Favorite extends React.Component {
               </Button>
             </Card.Meta>
             <Card.Description>
+              Likes: {numOfLikes.length}<Icon name='user'/><br/>
               Category: {this.props.favorite.category}<br/>
               Price: ${this.props.favorite.price}<br/>
               Condition: {this.props.favorite.condition}<br/>
