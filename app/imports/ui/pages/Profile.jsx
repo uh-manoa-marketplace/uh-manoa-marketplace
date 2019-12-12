@@ -14,7 +14,6 @@ class Profile extends React.Component {
   render() {
 
     const allItems = this.props.favorites; // Will be changed to favourite items only
-
     return (
         <Grid columns={2} divided container>
           <Grid.Column>

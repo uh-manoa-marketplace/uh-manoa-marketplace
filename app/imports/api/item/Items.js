@@ -22,6 +22,7 @@ const ItemsSchema = new SimpleSchema({
     defaultValue: 'good',
   },
   description: String,
+  liked: [String],
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

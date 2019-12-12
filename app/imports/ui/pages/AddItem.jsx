@@ -29,6 +29,11 @@ const formSchema = new SimpleSchema({
     defaultValue: 'good',
   },
   description: String,
+  liked: {
+   // This fixes the error of not being able to add an item. Forgot to add this with issue-035.
+   type: String,
+   optional: true,
+  },
 });
 
 /** Renders the Page for adding a document. */
@@ -38,7 +43,7 @@ class AddStuff extends React.Component {
   submit(data, formRef) {
     const { category, name, price, image, condition, description } = data;
     const owner = Meteor.user().username;
-    Items.insert({ category, name, price, image, owner, condition, description },
+    Items.insert({ category, name, price, image, owner, condition, description, liked: '' },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
