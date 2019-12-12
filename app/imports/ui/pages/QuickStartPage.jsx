@@ -36,7 +36,7 @@ class QuickStartPage extends React.Component {
                         fontWeight: 'normal',
                         marginTop: '1.5em',
                       }}>
-                Browse the items listed in the Items for Sale tab
+                Browse the items listed in the <q>Items for Sale</q> tab
               </Header>
               <Header as="h1"
                       inverted

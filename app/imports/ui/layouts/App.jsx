@@ -20,7 +20,6 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import UserItemsPage from '../pages/UserItemsPage';
-import Messages from '../pages/Messages';
 import QuickStartPage from '../pages/QuickStartPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
