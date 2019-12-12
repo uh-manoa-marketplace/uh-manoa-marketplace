@@ -20,20 +20,35 @@ class QuickStartPage extends React.Component {
                       }}>
                 Quick Start Guide
               </Header>
-              <Header as='h2'
+              <Header as='h1'
                       inverted
                       style={{
-                        fontSize: '1.7em',
+                        fontSize: '3em',
                         fontWeight: 'normal',
                         marginTop: '1.5em',
                       }}>
-                Buy, Sell, & Trade with others in the UH community
+                Buying
+              </Header>
+              <Header inverted>
+                Browse through the items for sale
+              </Header>
+              <Header inverted>
+                Click on the <Icon name='heart outline'/> icon to add to your favorites
+              </Header>
+              <Header as='h1'
+                      inverted
+                      style={{
+                        fontSize: '3em',
+                        fontWeight: 'normal',
+                        marginTop: '1.5em',
+                      }}>
+                Selling
               </Header>
               <Button as={NavLink}
                       primary
                       size='huge'
                       exact
-                      to="/signup">Get Started
+                      to="/list">See Whats For Sale
                 <Icon name='right arrow'/></Button>
             </Grid.Column>
           </Grid>
