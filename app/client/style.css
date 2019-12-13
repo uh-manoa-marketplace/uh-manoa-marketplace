@@ -5,9 +5,9 @@
   font-size: 200%;
   font-weight: bold;
 }
-.landing {
+.background {
   background-color: #1B1C1D;
-  padding: 125px;
+  margin: auto;
 }
 
 .footer {

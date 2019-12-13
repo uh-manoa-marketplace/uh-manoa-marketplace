@@ -17,7 +17,8 @@ class Landing extends React.Component {
                         style={{
                           fontSize: '4em',
                           fontWeight: 'normal',
-                          marginBottom: 0,
+                          marginTop: '1.5em',
+                          marginBottom: '1.5em',
                         }}>
                   UH Manoa Marketplace
                 </Header>
@@ -39,7 +40,10 @@ class Landing extends React.Component {
               </Grid.Column>
             </Grid.Row>
             <Grid.Row columns={3}
-                      style={{ marginTop: '1.5em' }}>
+                      style={{
+                        marginTop: '1.5em',
+                        marginBottom: '2em',
+                      }}>
               <Grid.Column textAlign='center'>
                 <Header as='h3'
                         style={{ fontSize: '2em' }}
