@@ -46,6 +46,15 @@ class Item extends React.Component {
     Items.update({ _id: docID }, { $push: { liked: itemLikedBy } });
   }
 
+  setRating(likedArray) {
+    const currentUser = Meteor.user() ? Meteor.user().username : '';
+    // console.log(`this is the likedArray: ${likedArray}`);
+    if (likedArray.includes(currentUser)) {
+      return 1;
+    }
+    return 0;
+  }
+
   render() {
     const currentUser = Meteor.user() ? Meteor.user().username : '';
     // console.log(`currentUser = ${currentUser}`);
@@ -66,6 +75,7 @@ class Item extends React.Component {
               <Rating
                   icon='heart'
                   floated='right'
+                  defaultRating={this.setRating(this.props.item.liked)}
                   onRate={
                     () => this.myFav(
                         this.props.item._id,
