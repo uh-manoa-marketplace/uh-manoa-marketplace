@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 class Landing extends React.Component {
   render() {
     return (
-        <div className='landing background'>
+        <div>
           <Grid container
                 centered
                 stackable>
