@@ -18,7 +18,7 @@ class Landing extends React.Component {
                           fontSize: '4em',
                           fontWeight: 'normal',
                           marginTop: '1.5em',
-                          marginBottom: '1.5em',
+                          marginBottom: '1em',
                         }}>
                   UH Manoa Marketplace
                 </Header>
