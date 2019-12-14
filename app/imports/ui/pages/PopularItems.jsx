@@ -20,16 +20,16 @@ class PopularItems extends React.Component {
     const filteredItems = this.props.items;
     // Sorting Items by the most amounts of likes. For some reason items with no likes were put at the front of
     // the list. To fix this I used _.reject to resolve this issue.
-    const mostPopular = _.sortBy(filteredItems, 'liked');
-    // console.log(mostPopular);
     // Rejecting items that have no likes at all.
-    const itemsWithNoLikes = _.reject(mostPopular, function (item) { return item.liked.length === 0; });
+    const itemsWithNoLikes = _.reject(filteredItems, function (item) { return item.liked.length === 0; });
     // console.log(itemsWithNoLikes);
+    const mostPopular = _.sortBy(itemsWithNoLikes, 'liked').reverse();
+    // console.log(mostPopular);
     return (
         <Container>
           <Header as='h2' textAlign='center' inverted>Popular Items</Header>
           <Card.Group>
-            {itemsWithNoLikes.map((item, index) => <Item key={index} item={item} Items={Items}/>)}
+            {mostPopular.map((item, index) => <Item key={index} item={item} Items={Items}/>)}
           </Card.Group>
         </Container>
     );
