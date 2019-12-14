@@ -31,9 +31,9 @@ class ProfileCard extends React.Component {
               </Button>
             </Card.Content>
           </Card>
-          <Button fluid>
-            <Link to={`/editProfile/${this.props.profile._id}`}>Edit Profile</Link>
-          </Button>
+          <Link to={`/editProfile/${this.props.profile._id}`}>
+            <Button fluid>Edit Profile</Button>
+          </Link>
         </div>
     );
   }

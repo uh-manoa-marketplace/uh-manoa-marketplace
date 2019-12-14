@@ -46,11 +46,22 @@ class Item extends React.Component {
     Items.update({ _id: docID }, { $push: { liked: itemLikedBy } });
   }
 
+  setRating(likedArray) {
+    const currentUser = Meteor.user() ? Meteor.user().username : '';
+    // console.log(`this is the likedArray: ${likedArray}`);
+    if (likedArray.includes(currentUser)) {
+      return 1;
+    }
+    return 0;
+  }
+
   render() {
     const currentUser = Meteor.user() ? Meteor.user().username : '';
     // console.log(`currentUser = ${currentUser}`);
-    const event = currentUser;
+    const userLiked = currentUser;
     // console.log(`this.props.item.liked = ${this.props.item.liked}`);
+    const numOfLikes = _.uniq(_.map(this.props.item.liked, function (e) { return e; }));
+    // console.log(numOfLikes.length);
     return (
         <Card centered>
           <Card.Content>
@@ -64,7 +75,8 @@ class Item extends React.Component {
               <Rating
                   icon='heart'
                   floated='right'
-                  // defaultRating={1} if user inside or 0 if not.
+                  defaultRating={this.setRating(this.props.item.liked)} // This makes the favorite icon sticky
+                  disabled={this.setRating(this.props.item.liked)} // This disables the favorite icon once selected
                   onRate={
                     () => this.myFav(
                         this.props.item._id,
@@ -75,7 +87,7 @@ class Item extends React.Component {
                         this.props.item.owner,
                         this.props.item.condition,
                         this.props.item.description,
-                        event,
+                        userLiked,
                     )}/>
             </Card.Header>
             <Card.Meta>
@@ -88,7 +100,7 @@ class Item extends React.Component {
               </Button>
             </Card.Meta>
             <Card.Description>
-              Likes: {}<br/>
+              {numOfLikes.length} <Icon name='user'/> liked this<br/>
               Category: {this.props.item.category}<br/>
               Price: ${this.props.item.price}<br/>
               Condition: {this.props.item.condition}<br/>
