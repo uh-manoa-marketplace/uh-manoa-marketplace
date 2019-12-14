@@ -15,6 +15,7 @@ import EditProfile from '../pages/EditProfile';
 import EditItem from '../pages/EditItem';
 import Profile from '../pages/Profile';
 import FavoritesPage from '../pages/FavoritesPage';
+import PopularItems from '../pages/PopularItems';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
@@ -38,6 +39,7 @@ class App extends React.Component {
               <ProtectedRoute path="/editProfile/:_id" component={EditProfile}/>
               <ProtectedRoute path="/favorites" component={FavoritesPage}/>
               <ProtectedRoute path="/myitems" component={UserItemsPage}/>
+              <ProtectedRoute path="/popular" component={PopularItems}/>
               <ProtectedRoute path="/editItem/:_id" component={EditItem}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <AdminProtectedRoute path="/admin" component={ItemsPageAdmin}/>

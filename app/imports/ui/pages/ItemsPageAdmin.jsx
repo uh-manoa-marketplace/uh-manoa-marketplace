@@ -73,7 +73,7 @@ class ItemsPageAdmin extends React.Component {
 
     return (
         <Container>
-          <Header as='h2' textAlign='center'>List of Items (Admin)</Header>
+          <Header as='h2' textAlign='center' inverted>List of Items (Admin)</Header>
           <Container className='searchField'>
             <Input
                 fluid

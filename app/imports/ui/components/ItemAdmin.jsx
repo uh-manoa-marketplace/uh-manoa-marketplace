@@ -1,9 +1,7 @@
 import React from 'react';
-import { Card, Image, Rating, Button, Form, Icon } from 'semantic-ui-react';
+import { Card, Image, Button, Form } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import swal from 'sweetalert';
-import { Favorites } from '../../api/favorite/Favorites';
 
 /** Renders a Card of an item that is up for sale. See pages/ItemPage.jsx. Has ability to view all items (Admins
  *  included) */
@@ -11,32 +9,6 @@ class ItemAdmin extends React.Component {
 
   removeItem(docID) {
     this.props.Items.remove(docID);
-  }
-
-  myFav(docID, itemCategory, itemName, itemPrice, itemImg, itemOwner, itemCondition, itemDescription) {
-    Favorites.insert(
-        {
-          _id: `${docID}`,
-          category: `${itemCategory}`,
-          name: `${itemName}`,
-          price: itemPrice,
-          image: `${itemImg}`,
-          owner: `${itemOwner}`,
-          condition: `${itemCondition}`,
-          description: `${itemDescription}`,
-        },
-        (error) => {
-          if (error) {
-            swal('Error', 'Item is already added to your Favorites', 'error');
-          } else {
-            swal('Success', 'Item added successfully to Favorites', 'success');
-          }
-        },
-    );
-    // console.log(
-    //     `Favorites now contains:
-    //     \n${docID}\n${itemName}\n${itemPrice}\n${itemImg}\n${itemOwner}\n${itemCondition}\n${itemDescription}`,
-    // );
   }
 
   render() {
@@ -48,28 +20,9 @@ class ItemAdmin extends React.Component {
           <Card.Content>
             <Card.Header>
               {this.props.item.name}
-              <Rating
-                  icon='heart'
-                  floated='right'
-                  onRate={() => this.myFav(
-                      this.props.item._id,
-                      this.props.item.category,
-                      this.props.item.name,
-                      this.props.item.price,
-                      this.props.item.image,
-                      this.props.item.owner,
-                      this.props.item.condition,
-                      this.props.item.description,
-                  )}/>
             </Card.Header>
             <Card.Meta>
               Owner: {this.props.item.owner}
-              <Button floated='right' compact size='mini'>
-                {/* eslint-disable-next-line max-len */}
-                <a href={`mailto: ${this.props.item.owner}?subject=Purchasing your ${this.props.item.name}&body=Hi, I'm interested in purchasing your ${this.props.item.name}.`}>
-                  <Icon name={'paper plane'}/>
-                </a>
-              </Button>
             </Card.Meta>
             <Card.Description>
               Category: {this.props.item.category}<br/>

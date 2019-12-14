@@ -17,13 +17,13 @@ class Profile extends React.Component {
     return (
         <Grid columns={2} divided container>
           <Grid.Column>
-            <Header as={'h2'} textAlign={'center'}>Your Public Profile</Header>
+            <Header as={'h2'} textAlign={'center'} inverted>Your Public Profile</Header>
             {/* eslint-disable-next-line max-len */}
             {this.props.profiles.map((profile, index) => <ProfileCard key={index} profile={profile} Profiles={Profiles}/>)}
           </Grid.Column>
 
           <Grid.Column>
-            <Header as={'h2'} textAlign={'center'}>Your Favorite Items</Header>
+            <Header as={'h2'} textAlign={'center'} inverted>Your Favorite Items</Header>
             <Container textAlign='center'>
               <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
               <Button content={'My Items'} as={NavLink} exact to="/myitems"/>
