@@ -27,7 +27,7 @@ class PopularItems extends React.Component {
     // console.log(mostPopular);
     return (
         <Container>
-          <Header as='h2' textAlign='center' inverted>Popular Items</Header>
+          <Header as='h2' textAlign='center' inverted>Trending Items</Header>
           <Card.Group>
             {mostPopular.map((item, index) => <Popular key={index} item={item} Items={Items}/>)}
           </Card.Group>
