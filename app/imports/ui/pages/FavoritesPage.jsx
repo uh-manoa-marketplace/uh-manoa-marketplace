@@ -10,13 +10,15 @@ import { Favorites } from '../../api/favorite/Favorites';
 class FavoritesPage extends React.Component {
   render() {
 
-    const allItems = this.props.favorites; // Will be changed to favorited items only
-    // console.log();
+    const allItems = this.props.favorites; // Will be changed to favorite items only
 
     return (
         <Grid container>
           <Grid.Column>
             <Header as={'h2'} textAlign={'center'} inverted style={{ paddingBottom: '1em' }}>My Favorites</Header>
+            <Header as={'h2'} textAlign={'center'} inverted style={{ paddingBottom: '1em' }}>
+              You have not added any favorites yet
+            </Header>
             <Card.Group itemsPerRow={4}>
               {allItems.map((favorite, index) => <Favorite key={index} favorite={favorite} Favorites={Favorites}/>)}
             </Card.Group>
