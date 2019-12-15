@@ -9,7 +9,7 @@ class Popular extends React.Component {
 
   render() {
     const numOfLikes = _.uniq(_.map(this.props.item.liked, function (e) { return e; }));
-    console.log(numOfLikes);
+    // console.log(numOfLikes);
     return (
         <Card centered>
           <Card.Content>
