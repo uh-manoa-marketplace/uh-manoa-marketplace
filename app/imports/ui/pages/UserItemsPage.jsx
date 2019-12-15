@@ -11,12 +11,12 @@ class UserItemsPage extends React.Component {
   render() {
 
     const currentUser = Meteor.user() ? Meteor.user().username : '';
-    console.log(currentUser);
+    // console.log(currentUser);
     const filteredItems = _.where(this.props.items, { owner: currentUser });
 
     return (
         <Container>
-          <Header as='h2' textAlign='center'>My Items</Header>
+          <Header as='h2' textAlign='center' inverted>My Items</Header>
           <Card.Group>
             {filteredItems.map((item, index) => <Owned key={index} item={item} Items={Items}/>)}
           </Card.Group>

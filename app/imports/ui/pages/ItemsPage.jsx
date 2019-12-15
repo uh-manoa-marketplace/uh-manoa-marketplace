@@ -74,7 +74,7 @@ class ItemsPage extends React.Component {
     return (
         <Container>
           <Header as='h2'
-                  textAlign='center'>Items for Sale</Header>
+                  textAlign='center' inverted>Items for Sale</Header>
           <Container className='searchField'>
             <Input
                 fluid

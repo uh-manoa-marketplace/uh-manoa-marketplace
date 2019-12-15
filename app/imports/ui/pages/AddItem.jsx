@@ -62,7 +62,8 @@ class AddStuff extends React.Component {
               centered>
           <Grid.Column>
             <Header as="h2"
-                    textAlign="center">List An Item</Header>
+                    textAlign="center">List An Item
+            </Header>
             <AutoForm ref={ref => {
               fRef = ref;
             }}

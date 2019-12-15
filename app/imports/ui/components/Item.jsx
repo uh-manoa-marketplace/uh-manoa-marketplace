@@ -42,6 +42,17 @@ class Item extends React.Component {
           }
         },
     );
+    // db.students.update(
+    //     { _id: 1 },
+    //     {
+    //       $push: {
+    //         quizzes: {
+    //           $each: [ { id: 3, score: 8 }, { id: 4, score: 7 }, { id: 5, score: 6 } ],
+    //           $sort: { score: 1 }
+    //         }
+    //       }
+    //     }
+    // )
     // This updates the Item that was selected to be store into favorites. The user is added to the liked array.
     Items.update({ _id: docID }, { $push: { liked: itemLikedBy } });
   }
