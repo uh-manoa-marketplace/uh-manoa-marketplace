@@ -112,7 +112,7 @@ class Item extends React.Component {
               Owner: {this.props.item.owner}
               {/* eslint-disable-next-line max-len */}
               <a href={`mailto: ${this.props.item.owner}?subject=Purchasing your ${this.props.item.name}&body=Hi, I'm interested in purchasing your ${this.props.item.name}.`}>
-                <Button icon={'mail'} content={'email'} floated='right'/>
+                <Button icon={'mail'} content={'email'} floated='right' size='mini'/>
               </a>
             </Card.Meta>
             <Card.Description>

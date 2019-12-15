@@ -1,10 +1,11 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 // The Footer appears at the bottom of every page. Rendered by the App Layout component. *
 class Footer extends React.Component {
   render() {
-    const divStyle = { paddingTop: '2em' };
+    const divStyle = { paddingTop: '0px' };
     return (
         <footer>
           <div style={divStyle}
@@ -14,9 +15,11 @@ class Footer extends React.Component {
                   centered
                   stackable>
               <Grid.Column textAlign='center'>
-                Department of Information and Computer Sciences<br/>
+                UH Manoa Marketplace<br/>
                 University of Hawaii<br/>
                 Honolulu, HI 96822<br/>
+                <Link to={'/quickStart/'}>Quick Start Guide</Link><br/>
+                <a href="https://uh-manoa-marketplace.github.io/">Homepage</a><br/>
               </Grid.Column>
             </Grid>
           </div>

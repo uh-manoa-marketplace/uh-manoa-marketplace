@@ -16,7 +16,7 @@ class UserItemsPage extends React.Component {
 
     return (
         <Container>
-          <Header as='h2' textAlign='center' inverted>My Items</Header>
+          <Header as={'h2'} textAlign={'center'} inverted style={{ paddingBottom: '1em' }}>My Items</Header>
           <Card.Group>
             {filteredItems.map((item, index) => <Owned key={index} item={item} Items={Items}/>)}
           </Card.Group>
