@@ -63,12 +63,14 @@ class ItemsPage extends React.Component {
     let findItems = _.where(filteredItems, { category: value });
 
     // Testing whether we have a empty list based on the category selected
-    const checker = _.isEmpty(findItems);
+    const empty = _.isEmpty(findItems);
 
     // This is in the event that the choice "All" is selected. We are assuming that each category will have items
     // inside it already.
-    if (checker === true) {
-      findItems = filteredItems;
+    if (empty === true) {
+      if (value === 'all' || value === undefined) {
+        findItems = filteredItems;
+      }
     }
 
     return (
