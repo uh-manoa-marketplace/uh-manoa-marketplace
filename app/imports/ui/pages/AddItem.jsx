@@ -12,6 +12,8 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import SimpleSchema from 'simpl-schema';
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
@@ -21,7 +23,10 @@ const formSchema = new SimpleSchema({
     defaultValue: 'electronics',
   },
   name: String,
-  price: Number,
+  price: {
+    type: Number,
+    min: 0,
+  },
   image: String,
   condition: {
     type: String,
@@ -37,7 +42,13 @@ const formSchema = new SimpleSchema({
 });
 
 /** Renders the Page for adding a document. */
-class AddStuff extends React.Component {
+class AddItem extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { redirectToReferer: false };
+  }
+
 
   /** On submit, insert the data. */
   submit(data, formRef) {
@@ -50,6 +61,7 @@ class AddStuff extends React.Component {
           } else {
             swal('Success', 'Item added successfully', 'success');
             formRef.reset();
+            this.setState({ redirectToReferer: true });
           }
         });
   }
@@ -57,6 +69,12 @@ class AddStuff extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
+    const { from } = this.props.location.state || { from: { pathname: '/list' } };
+    // if correct authentication, redirect to from: page instead of signup screen
+    if (this.state.redirectToReferer) {
+      return <Redirect to={from}/>;
+    }
+
     return (
         <Grid container
               centered>
@@ -71,7 +89,9 @@ class AddStuff extends React.Component {
                 <SelectField name='category'/>
                 <TextField name='name'/>
                 <NumField name='price'
-                          decimal={false}/>
+                          decimal={false}
+                          min={1}
+                />
                 <TextField name='image'/>
                 <SelectField name='condition'/>
                 <LongTextField name='description'/>
@@ -85,4 +105,9 @@ class AddStuff extends React.Component {
   }
 }
 
-export default AddStuff;
+AddItem.propTypes = {
+  location: PropTypes.object,
+};
+
+
+export default AddItem;

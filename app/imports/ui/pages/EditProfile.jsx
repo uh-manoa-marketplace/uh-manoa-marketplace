@@ -11,21 +11,31 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
+import { Redirect } from 'react-router-dom';
 import { Profiles, ProfilesSchema } from '../../api/profiles/Profile';
 
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { redirectToReferer: false };
+  }
 
   /** On successful submit, insert the data. */
   submit(data) {
     const { firstName, lastName, image, biography, _id } = data;
     Profiles.update(_id, { $set: { firstName, lastName, image, biography } }, (error) => (error ?
       swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
+      swal('Success', 'Item updated successfully', 'success') && this.setState({ redirectToReferer: true })));
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/profile' } };
+    // if correct authentication, redirect to from: page instead of signup screen
+    if (this.state.redirectToReferer) {
+      return <Redirect to={from}/>;
+    }
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
@@ -56,6 +66,7 @@ class EditProfile extends React.Component {
 EditProfile.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
+  location: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 

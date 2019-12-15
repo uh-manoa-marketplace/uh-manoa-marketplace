@@ -14,20 +14,31 @@ import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import SelectField from 'uniforms-semantic/SelectField';
 import NumField from 'uniforms-semantic/NumField';
 import { Items, ItemsSchema } from '../../api/item/Items';
+import { Redirect } from 'react-router-dom';
 
 /** Renders the Page for editing a single document. */
 class EditItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { redirectToReferer: false };
+  }
+
 
   /** On successful submit, insert the data. */
   submit(data) {
     const { category, name, price, image, condition, description, _id } = data;
     Items.update(_id, { $set: { category, name, price, image, condition, description } }, (error) => (error ?
       swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
+      swal('Success', 'Item updated successfully', 'success') && this.setState({ redirectToReferer: true })));
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/myitems' } };
+    // if correct authentication, redirect to from: page instead of signup screen
+    if (this.state.redirectToReferer) {
+      return <Redirect to={from}/>;
+    }
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
@@ -60,6 +71,7 @@ class EditItem extends React.Component {
 EditItem.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
+  location: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 
