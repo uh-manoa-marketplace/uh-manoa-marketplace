@@ -16,9 +16,6 @@ class FavoritesPage extends React.Component {
         <Grid container>
           <Grid.Column>
             <Header as={'h2'} textAlign={'center'} inverted style={{ paddingBottom: '1em' }}>My Favorites</Header>
-            <Header as={'h2'} textAlign={'center'} inverted style={{ paddingBottom: '1em' }}>
-              You have not added any favorites yet
-            </Header>
             <Card.Group itemsPerRow={4}>
               {allItems.map((favorite, index) => <Favorite key={index} favorite={favorite} Favorites={Favorites}/>)}
             </Card.Group>
