@@ -22,9 +22,9 @@ class PopularItems extends React.Component {
     // the list. To fix this I used _.reject to resolve this issue.
     // Rejecting items that have no likes at all.
     const itemsWithNoLikes = _.reject(filteredItems, function (item) { return item.liked.size === 0; });
-    // console.log(itemsWithNoLikes);
-    const mostPopular = _.sortBy(itemsWithNoLikes, 'liked');
-    // console.log(mostPopular);
+    console.log(itemsWithNoLikes);
+    const mostPopular = _.sortBy(itemsWithNoLikes, 'liked').reverse();
+    console.log(mostPopular);
     return (
         <Container>
           <Header as='h2' textAlign='center' inverted>Popular Items</Header>
