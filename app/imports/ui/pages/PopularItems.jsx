@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Header, Card, Loader } from 'semantic-ui-react';
-import Item from '/imports/ui/components/Item';
+import Popular from '/imports/ui/components/Popular';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Items } from '../../api/item/Items';
@@ -22,14 +22,14 @@ class PopularItems extends React.Component {
     // the list. To fix this I used _.reject to resolve this issue.
     // Rejecting items that have no likes at all.
     const LikedItems = _.reject(filteredItems, function (item) { return _.isEmpty(item.liked) === true; });
-    // console.log(itemsWithNoLikes);
+    console.log(LikedItems);
     const mostPopular = _.sortBy(LikedItems, 'liked').reverse();
-    // console.log(mostPopular);
+    console.log(mostPopular);
     return (
         <Container>
           <Header as='h2' textAlign='center' inverted>Popular Items</Header>
           <Card.Group>
-            {mostPopular.map((item, index) => <Item key={index} item={item} Items={Items}/>)}
+            {mostPopular.map((item, index) => <Popular key={index} item={item} Items={Items}/>)}
           </Card.Group>
         </Container>
     );
