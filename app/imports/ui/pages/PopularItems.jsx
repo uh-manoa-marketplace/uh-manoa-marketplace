@@ -23,7 +23,7 @@ class PopularItems extends React.Component {
     // Rejecting items that have no likes at all.
     const itemsWithNoLikes = _.reject(filteredItems, function (item) { return item.liked.length === 0; });
     // console.log(itemsWithNoLikes);
-    const mostPopular = _.sortBy(itemsWithNoLikes, 'liked').reverse();
+    const mostPopular = _.sortBy(itemsWithNoLikes, 'liked');
     // console.log(mostPopular);
     return (
         <Container>
