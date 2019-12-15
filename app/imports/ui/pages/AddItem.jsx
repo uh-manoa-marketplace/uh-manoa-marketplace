@@ -25,7 +25,7 @@ const formSchema = new SimpleSchema({
   name: String,
   price: {
     type: Number,
-    min: 0,
+    min: 1,
   },
   image: String,
   condition: {
