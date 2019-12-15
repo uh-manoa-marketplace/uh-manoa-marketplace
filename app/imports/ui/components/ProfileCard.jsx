@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Icon, Image } from 'semantic-ui-react';
+import { Button, Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
@@ -23,12 +23,6 @@ class ProfileCard extends React.Component {
               <Card.Description>
                 {this.props.profile.biography}
               </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Button icon labelPosition='right'>
-                Message
-                <Icon name='mail'/>
-              </Button>
             </Card.Content>
           </Card>
           <Link to={`/editProfile/${this.props.profile._id}`}>

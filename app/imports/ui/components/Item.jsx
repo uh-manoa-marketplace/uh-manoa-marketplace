@@ -87,7 +87,7 @@ class Item extends React.Component {
                   icon='heart'
                   floated='right'
                   defaultRating={this.setRating(this.props.item.liked)} // This makes the favorite icon sticky
-                  disabled={(this.setRating(this.props.item.liked)) ? true : false} // Disables heart icon once selected
+                  disabled={!!(this.setRating(this.props.item.liked))} // Disables heart icon once selected
                   onRate={
                     () => this.myFav(
                         this.props.item._id,
@@ -103,12 +103,10 @@ class Item extends React.Component {
             </Card.Header>
             <Card.Meta>
               Owner: {this.props.item.owner}
-              <Button floated='right' compact size='mini'>
-                {/* eslint-disable-next-line max-len */}
-                <a href={`mailto: ${this.props.item.owner}?subject=Purchasing your ${this.props.item.name}&body=Hi, I'm interested in purchasing your ${this.props.item.name}.`}>
-                  <Icon name={'paper plane'}/>
-                </a>
-              </Button>
+              {/* eslint-disable-next-line max-len */}
+              <a href={`mailto: ${this.props.item.owner}?subject=Purchasing your ${this.props.item.name}&body=Hi, I'm interested in purchasing your ${this.props.item.name}.`}>
+                <Button icon={'mail'} content={'email'} floated='right'/>
+              </a>
             </Card.Meta>
             <Card.Description>
               {numOfLikes.length} <Icon name='user'/> liked this<br/>
