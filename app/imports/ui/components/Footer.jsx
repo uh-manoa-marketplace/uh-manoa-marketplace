@@ -18,7 +18,7 @@ class Footer extends React.Component {
                 UH Manoa Marketplace<br/>
                 University of Hawaii<br/>
                 Honolulu, HI 96822<br/>
-                <Link to={'/quickStart/'}>Quick Start</Link><br/>
+                <Link to={'/quickStart/'}>Quick Start Guide</Link><br/>
                 <a href="https://uh-manoa-marketplace.github.io/">Homepage</a><br/>
               </Grid.Column>
             </Grid>
