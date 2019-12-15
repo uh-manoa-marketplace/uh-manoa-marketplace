@@ -94,7 +94,7 @@ class Item extends React.Component {
                   icon='heart'
                   floated='right'
                   defaultRating={this.setRating(this.props.item.liked)} // This makes the favorite icon sticky
-                  disabled={(this.setRating(this.props.item.liked)) ? true : false} // Disables heart icon once selected
+                  disabled={!!(this.setRating(this.props.item.liked))} // Disables heart icon once selected
                   onRate={
                     () => this.myFav(
                         this.props.item._id,
