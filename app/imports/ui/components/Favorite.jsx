@@ -34,9 +34,9 @@ class Favorite extends React.Component {
             </Card.Header>
             <Card.Meta>
               Owner: {this.props.favorite.owner}
-              {/* eslint-disable-next-line max-len */}
-              <a href={`mailto: ${this.props.favorite.owner}?subject=Purchasing your ${this.props.favorite.name}&body=Hi, I'm interested in purchasing your ${this.props.favorite.name}.`}>
-                <Button icon={'mail'} floated='right'/>
+              <a href={`mailto: ${this.props.favorite.owner}?subject=Purchasing your 
+              ${this.props.favorite.name}&body=Hi, I'm interested in purchasing your ${this.props.favorite.name}.`}>
+                <Button icon={'mail'} content={'email'} floated='right' size='mini'/>
               </a>
             </Card.Meta>
             <Card.Description>

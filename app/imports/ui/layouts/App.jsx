@@ -21,6 +21,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import UserItemsPage from '../pages/UserItemsPage';
+import QuickStartPage from '../pages/QuickStartPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -42,6 +43,7 @@ class App extends React.Component {
               <ProtectedRoute path="/popular" component={PopularItems}/>
               <ProtectedRoute path="/editItem/:_id" component={EditItem}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
+              <ProtectedRoute path="/quickStart" component={QuickStartPage}/>
               <AdminProtectedRoute path="/admin" component={ItemsPageAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
@@ -65,7 +67,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
       const isLogged = Meteor.userId() !== null;
       return isLogged ?
           (<Component {...props} />) :
-          (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+          (<Redirect to={{ pathname: '/quickStart', state: { from: props.location } }}/>
       );
     }}
   />

@@ -90,7 +90,7 @@ class Signup extends React.Component {
 
   /** Display the signup form. Redirect to ListItem page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/list' } };
+    const { from } = this.props.location.state || { from: { pathname: '/quickStart' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
