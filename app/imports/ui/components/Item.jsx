@@ -60,7 +60,14 @@ class Item extends React.Component {
   setRating(likedArray) {
     const currentUser = Meteor.user() ? Meteor.user().username : '';
     // console.log(`this is the likedArray: ${likedArray}`);
-    if (likedArray.includes(currentUser)) {
+    // if (likedArray.includes(currentUser)) {
+    //   return 1;
+    // }
+    // return 0;
+
+    // Attempting to fix the error with the deployed version. Works the same way as "includes" function.
+    const userChecker = _.contains(likedArray, currentUser);
+    if (userChecker) {
       return 1;
     }
     return 0;
