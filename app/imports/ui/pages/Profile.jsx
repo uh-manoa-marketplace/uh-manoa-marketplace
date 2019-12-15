@@ -1,10 +1,9 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Card, Grid, Header, Button, Container } from 'semantic-ui-react';
+import { Card, Grid, Header } from 'semantic-ui-react';
 import Favorite from '/imports/ui/components/Favorite';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import { Favorites } from '../../api/favorite/Favorites';
 import { Profiles } from '../../api/profiles/Profile';
 import ProfileCard from '../components/ProfileCard';
@@ -24,10 +23,6 @@ class Profile extends React.Component {
 
           <Grid.Column>
             <Header as={'h2'} textAlign={'center'} inverted>Your Favorite Items</Header>
-            <Container textAlign='center'>
-              <Button content={'My Favorites'} as={NavLink} exact to="/favorites"/>
-              <Button content={'My Items'} as={NavLink} exact to="/myitems"/>
-            </Container>
             <Card.Group itemsPerRow={2}>
               {allItems.map((favorite, index) => <Favorite key={index} favorite={favorite} Favorites={Favorites}/>)}
             </Card.Group>
