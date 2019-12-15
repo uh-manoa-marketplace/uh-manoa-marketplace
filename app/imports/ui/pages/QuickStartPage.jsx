@@ -63,7 +63,7 @@ class QuickStartPage extends React.Component {
                         fontWeight: 'normal',
                         marginTop: '1.5em',
                       }}>
-                Click on <Icon name='paper plane'/>on an item you&#39;re interested in to email the seller
+                Click on <Icon name='mail'/> on an item you&#39;re interested in to email the seller
               </Header>
               <Header as='h1'
                       inverted
