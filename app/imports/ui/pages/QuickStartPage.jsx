@@ -45,7 +45,7 @@ class QuickStartPage extends React.Component {
                         fontWeight: 'normal',
                         marginTop: '1.5em',
                       }}>
-                Browse the most popular items listed in &#39;Popular Items&#39;
+                Browse the most trending items listed in &#39;Trending Items&#39;
               </Header>
               <Header as="h1"
                       inverted
