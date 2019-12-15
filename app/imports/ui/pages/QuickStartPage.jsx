@@ -36,7 +36,16 @@ class QuickStartPage extends React.Component {
                         fontWeight: 'normal',
                         marginTop: '1.5em',
                       }}>
-                Browse the items listed in &#39;Items for Sale&#39;
+                Browse all the items listed in &#39;Items for Sale&#39;
+              </Header>
+              <Header as="h1"
+                      inverted
+                      style={{
+                        fontSize: '1em',
+                        fontWeight: 'normal',
+                        marginTop: '1.5em',
+                      }}>
+                Browse the most popular items listed in &#39;Popular Items&#39;
               </Header>
               <Header as="h1"
                       inverted
@@ -72,7 +81,26 @@ class QuickStartPage extends React.Component {
                         fontWeight: 'normal',
                         marginTop: '1.5em',
                       }}>
-                List an item for sale in &#39;List An Item&#39;
+                List an item for sale in &#39;List An Item&#39; and fill out all the necessary information
+              </Header>
+              <Header as="h1"
+                      inverted
+                      style={{
+                        fontSize: '1em',
+                        fontWeight: 'normal',
+                        marginTop: '1.5em',
+                      }}>
+                Browse your items listed in &#39;My Items&#39; and choose to Remove or Edit a listing
+              </Header>
+              <Header as="h1"
+                      inverted
+                      style={{
+                        fontSize: '1em',
+                        fontWeight: 'normal',
+                        marginTop: '1.5em',
+                        paddingBottom: '3em',
+                      }}>
+                Wait for buyers to email you about an item and set up a meeting
               </Header>
               <Button as={NavLink}
                       primary
