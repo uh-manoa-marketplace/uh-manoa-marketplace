@@ -60,7 +60,14 @@ class Item extends React.Component {
   setRating(likedArray) {
     const currentUser = Meteor.user() ? Meteor.user().username : '';
     // console.log(`this is the likedArray: ${likedArray}`);
-    if (likedArray.includes(currentUser)) {
+    // if (likedArray.includes(currentUser)) {
+    //   return 1;
+    // }
+    // return 0;
+
+    // Attempting to fix the error with the deployed version. Works the same way as "includes" function.
+    const userChecker = _.contains(likedArray, currentUser);
+    if (userChecker) {
       return 1;
     }
     return 0;
@@ -87,7 +94,7 @@ class Item extends React.Component {
                   icon='heart'
                   floated='right'
                   defaultRating={this.setRating(this.props.item.liked)} // This makes the favorite icon sticky
-                  disabled={this.setRating(this.props.item.liked)} // This disables the favorite icon once selected
+                  disabled={!!(this.setRating(this.props.item.liked))} // Disables heart icon once selected
                   onRate={
                     () => this.myFav(
                         this.props.item._id,
@@ -103,12 +110,10 @@ class Item extends React.Component {
             </Card.Header>
             <Card.Meta>
               Owner: {this.props.item.owner}
-              <Button floated='right' compact size='mini'>
-                {/* eslint-disable-next-line max-len */}
-                <a href={`mailto: ${this.props.item.owner}?subject=Purchasing your ${this.props.item.name}&body=Hi, I'm interested in purchasing your ${this.props.item.name}.`}>
-                  <Icon name={'paper plane'}/>
-                </a>
-              </Button>
+              {/* eslint-disable-next-line max-len */}
+              <a href={`mailto: ${this.props.item.owner}?subject=Purchasing your ${this.props.item.name}&body=Hi, I'm interested in purchasing your ${this.props.item.name}.`}>
+                <Button icon={'mail'} content={'email'} floated='right'/>
+              </a>
             </Card.Meta>
             <Card.Description>
               {numOfLikes.length} <Icon name='user'/> liked this<br/>

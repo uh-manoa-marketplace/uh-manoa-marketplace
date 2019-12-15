@@ -21,9 +21,9 @@ class PopularItems extends React.Component {
     // Sorting Items by the most amounts of likes. For some reason items with no likes were put at the front of
     // the list. To fix this I used _.reject to resolve this issue.
     // Rejecting items that have no likes at all.
-    const itemsWithNoLikes = _.reject(filteredItems, function (item) { return item.liked.length === 0; });
+    const LikedItems = _.reject(filteredItems, function (item) { return _.isEmpty(item.liked) === true; });
     // console.log(itemsWithNoLikes);
-    const mostPopular = _.sortBy(itemsWithNoLikes, 'liked').reverse();
+    const mostPopular = _.sortBy(LikedItems, 'liked').reverse();
     // console.log(mostPopular);
     return (
         <Container>
