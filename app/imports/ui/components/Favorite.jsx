@@ -3,6 +3,7 @@ import { Button, Card, Icon, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
+import Swal from 'sweetalert2';
 import { Favorites } from '../../api/favorite/Favorites';
 import { Items } from '../../api/item/Items';
 
@@ -22,11 +23,15 @@ class Favorite extends React.Component {
   }
 
   render() {
-  const numOfLikes = _.uniq(_.map(this.props.favorite.liked, function (e) { return e; }));
+    const numOfLikes = _.uniq(_.map(this.props.favorite.liked, function (e) {
+      return e;
+    }));
     return (
         <Card centered>
           <Card.Content>
-            <Image centered size='medium' src={this.props.favorite.image}/>
+            <Image centered
+                   size='medium'
+                   src={this.props.favorite.image}/>
           </Card.Content>
           <Card.Content>
             <Card.Header>
@@ -36,7 +41,10 @@ class Favorite extends React.Component {
               Owner: {this.props.favorite.owner}
               <a href={`mailto: ${this.props.favorite.owner}?subject=Purchasing your 
               ${this.props.favorite.name}&body=Hi, I'm interested in purchasing your ${this.props.favorite.name}.`}>
-                <Button icon={'mail'} content={'email'} floated='right' size='mini'/>
+                <Button icon={'mail'}
+                        content={'email'}
+                        floated='right'
+                        size='mini'/>
               </a>
             </Card.Meta>
             <Card.Description>
@@ -51,7 +59,15 @@ class Favorite extends React.Component {
             <Button
                 fluid
                 color='red'
-                onClick={() => this.removeItem(this.props.favorite._id, this.props.favorite.liked)}>REMOVE
+                onClick={() => Swal.fire({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!',
+                }).then(() => this.removeItem(this.props.favorite._id, this.props.favorite.liked))}>REMOVE
             </Button>
           </Card.Content>
         </Card>
