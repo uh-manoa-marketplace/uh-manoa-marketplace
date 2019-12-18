@@ -3,7 +3,6 @@ import { Button, Card, Icon, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import Swal from 'sweetalert2';
 import { Favorites } from '../../api/favorite/Favorites';
 import { Items } from '../../api/item/Items';
 

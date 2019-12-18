@@ -13,8 +13,8 @@ import PropTypes from 'prop-types';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import SelectField from 'uniforms-semantic/SelectField';
 import NumField from 'uniforms-semantic/NumField';
-import { Items, ItemsSchema } from '../../api/item/Items';
 import { Redirect } from 'react-router-dom';
+import { Items, ItemsSchema } from '../../api/item/Items';
 
 /** Renders the Page for editing a single document. */
 class EditItem extends React.Component {
